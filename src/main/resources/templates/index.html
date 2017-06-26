@@ -27,6 +27,9 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+
 </head>
 
 <body>
@@ -44,36 +47,36 @@
          aria-hidden="true">
         <div class="modal-dialog">
 
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <br/>
-                        <p>
-                        <h4 class="text-center">Мы свяжемся с вами!</h4>
-                        </p>
-                    </div>
-                    <form method="post" name="send_mail" id="send_mail"  th:action="@{/sendMail}" action="/sendMail" role="form">
-                        <div class="modal-body">
-
-                            <input type="text" class="form-control" id="name" name="name" placeholder="как к вам обращаться"
-                                   th:required="required" th:autofocus="autofocus"/>
-                            <br/>
-                            <input type="email" class="form-control" id="mail" name="mail" placeholder="укажите ваш e-mail"
-                                   th:required="required"/>
-                            <br/>
-                            <p class="text-center"> &nbsp;&nbsp;или напишите нам сами <a
-                                    style="color:black;text-shadow:none;font-weight:bold"
-                                    href="mailto:info@hashfactory.ru">info&#64;hashfactory.ru</a></p>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>
-                            <!--
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                                        <button type="button" class="btn btn-primary">Сохранить изменения</button>
-    -->
-                        </div>
-                    </form>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <br/>
+                    <p>
+                    <h4 class="text-center">Мы свяжемся с вами!</h4>
+                    </p>
                 </div>
+                <form method="post" name="send_mail" id="send_mail" action="javascript:void(null);" onsubmit="call()" role="form">
+                    <div class="modal-body">
+
+                        <input type="text" class="form-control" id="name" name="name" placeholder="как к вам обращаться"
+                               th:required="required" th:autofocus="autofocus" value="" />
+                        <br/>
+                        <input type="email" class="form-control" id="mail" name="mail" placeholder="укажите ваш e-mail"
+                               th:required="required" value="" />
+                        <br/>
+                        <p class="text-center"> &nbsp;&nbsp;или напишите нам сами <a
+                                style="color:black;text-shadow:none;font-weight:bold"
+                                href="mailto:info@hashfactory.ru">info&#64;hashfactory.ru</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-lg btn-primary btn-block" id="send" type="submit">Отправить</button>
+                        <!--
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                                    <button type="button" class="btn btn-primary">Сохранить изменения</button>
+-->
+                    </div>
+                </form>
+            </div>
 
         </div>
     </div>
@@ -165,30 +168,73 @@
 </div>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="/dist/js/jquery.min.js"></script>
-<script src="/dist/js/bootstrap.min.js"></script>
-<script src="/dist/js/empty.js"></script>
-
 <div id="infoModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-center">Сайт находится в разработке</h4><br/>
+                <h2 class="modal-title text-center">Всё получилось =)</h2><br/>
             </div>
-
+            <div class="modal-body">
+                <h4 class="modal-title text-center">В ближайшее время мы свяжемся с вами</h4><br/>
+            </div>
             <div class="modal-footer">
-                <button class="btn btn-info" type="button" data-dismiss="modal">Закрыть</button>
+                <button class="btn btn-warning" type="button" data-dismiss="modal">Закрыть</button>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    $('#infoModal').modal()
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/dist/js/jquery.min.js"></script>
+<script src="/dist/js/bootstrap.min.js"></script>
+<script src="/dist/js/empty.js"></script>
 
+<script type="text/javascript">
+    function call(){
+        var name = $("#name").val();
+        var mail = $("#mail").val();
+        var msg   = $('#send_mail').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'http://hashfactory.ru/sendMail/',
+            data: msg,
+            success: function(data) {
+                $('#mailModal').modal('hide')
+                $('#infoModal').modal()
+            },
+            error:  function(xhr, str){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+//        $('#infoModal').modal()
+
+//        $(document).on("click", "#send", function () {
+//            var name = $("#name").val();
+//            var mail = $("#mail").val();
+//            if(name==="" || mail===""){
+//                console.log("Заполнить нужно все поля!");
+//                return;
+//            }
+//            $.ajax({
+//                url: "http://localhost:8080/sendMail/" + name+"/"+mail,
+//                type: "GET",
+//                dataType: "text"
+//            }).done(function(data) {
+//                console.log("ok")
+//                $('#mailModal').modal('hide')
+//                $('#infoModal').modal()
+////                index++;
+////                $("<div class='panel panel-primary'><div class='panel-heading'>" + index + "</div><div class='panel-body'>" + data + "</div></div>")
+////                    .appendTo("#messages");
+//            }).fail(function(){
+//                console.log("error")
+//            });
+//
+//        });
+    });
 </script>
 </body>
 
