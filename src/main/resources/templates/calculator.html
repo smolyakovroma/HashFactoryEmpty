@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico"/>
+
+    <title>HashFactory</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+
+    <!-- Custom styles for this template -->
+      <link href="/dist/css/dashboard.css" rel="stylesheet"></link>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand" href="#">Личный кабинет client@hashfactoru.ru</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search..."/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="#">Overview</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Analytics</a></li>
+                    <li><a href="#">Export</a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href="">Nav item</a></li>
+                    <li><a href="">Nav item again</a></li>
+                    <li><a href="">One more nav</a></li>
+                    <li><a href="">Another nav item</a></li>
+                    <li><a href="">More navigation</a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href="">Nav item again</a></li>
+                    <li><a href="">One more nav</a></li>
+                    <li><a href="">Another nav item</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="form-group">
+                            <label for="gpu">Видеокарта:</label>
+                            <select class="form-control" id="gpu">                  
+                        </select>
+                  
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="form-group">
+                            <label for="countgpu">Количество в риге</label>
+                            <select class="form-control" id="countgpu">
+                        <option>4</option>
+                        <option>6</option>
+                        <option>8</option>
+
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="input-group">
+                            <label for="currency">Курс доллара</label>
+                            <div class="input-group">
+                                <input type="text" id="currency" class="form-control" value="51"/>
+                                <span class="input-group-addon"> руб.коп</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="sub-header">Стоимость одной риги</h2>
+                <div class="table-responsive"  id="table">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Наименование</th>
+                                <th>Количество</th>
+                                <th>Цена, руб.</th>
+                                <th>Сумма, руб.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td id="gpu_name">Видеокарта GTX 1060 6GB</td>
+                                <td id="gpu_count">4</td>
+                                <td id="gpu_price">22000 </td>
+                                <td id="gpu_sum">88000 </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Материнская плата</td>
+                                <td>1</td>
+                                <td>10000 </td>
+                                <td id="motherboard_sum">10000 </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Процессор + Cooler</td>
+                                <td>1</td>
+                                <td>2500</td>
+                                <td id="processor_sum">2500</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Оперативная память 4GB</td>
+                                <td>1</td>
+                                <td>1500</td>
+                                <td id="ram_sum">1500</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>SSD</td>
+                                <td>1</td>
+                                <td>3000</td>
+                                <td id="ssd_sum">3000</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td id="bp_name">Блок питания</td>
+                                <td id="bp_count">1</td>
+                                <td id="bp_price">10000</td>
+                                <td id="bp_sum">10000</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Райзера PCI-E</td>
+                                <td id="riser_count">4</td>
+                                <td>300</td>
+                                <td id="riser_sum">1200</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Корпус фермы</td>
+                                <td>1</td>
+                                <td>300</td>
+                                <td id="case_sum">300</td>
+                            </tr>  
+                        </tbody>
+                    </table>
+                     <h3 class="pull-right" id="total_sum">Итого сумма: 0 рублей</h3>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/js/docs.min.js"></script>
+    <script src="/assets/js/calculate.js"></script>
+</body>
+</html>

@@ -14,6 +14,11 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping(value = "/beta/calculator")
+    public String calc() {
+        return "calculator";
+    }
+
 
     @RequestMapping(value = "/contact", method = RequestMethod.POST)
     public void contact(@RequestParam("name") String name, @RequestParam("mail") String mail){
