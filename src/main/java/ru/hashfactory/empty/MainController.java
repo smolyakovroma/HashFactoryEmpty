@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 
+    //TODO обнвление курс доллара
+    //TODO учет сложности для каждой монеты
+    //TODO удлание строк в сравнение
+    //TODO сохранение в ексель пдф
+    //TODO срок окупаемости в долях дней
+
     @RequestMapping(value = "/")
     public String main() {
         return "index";

@@ -18,8 +18,26 @@ $(document).ready(function () {
     for (i = 0; i < gpus.length; i++) {
         $("<option>" + gpus[i] + " (" + gpus_price[i] + "$)</option>").appendTo("#gpu");
     }
+
+    get_actual_rate();
     update_price();
 });
+
+function get_actual_rate() {
+    $("#table").hide();
+    $.ajax({
+        url: 'https://query.yahooapis.com/v1/public/yql?' +
+        'q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDRUB%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=',
+        type: "GET",
+        dataType: "json"
+
+    }).done(function (data) {
+        $("#currency").val(data.query.results.rate.Rate);
+        update_price();
+    });
+
+}
+
 
 
 function add_recoupment_stack() {
@@ -139,7 +157,6 @@ function update_price() {
 
     var currency = $("#currency").val();
     var price_gpu = $("#price_gpu_top").val();
-    console.log(price_gpu);
     var str_gpu = $("#gpu option:selected").text();
     var str_countgpu = $("#countgpu option:selected").val();
     var gpu_index = $("#gpu option:selected").index();
@@ -221,12 +238,23 @@ function update_price() {
         $("#table").hide();
     }
 
-    var sum = parseFloat($("#gpu_sum").text()) + parseFloat($("#motherboard_sum").text()) + parseFloat($("#processor_sum").text()) + parseFloat($("#ram_sum").text()) +
-        parseFloat($("#ssd_sum").text()) + parseFloat($("#bp_sum").text()) + parseFloat($("#riser_sum").text()) + parseFloat($("#case_sum").text());
-    $("#total_sum").html("Потребление фермы: " + $("#intake").val() + "ваттЧас    / Итого сумма: " + sum + " рублей");
+    update_total_price();
 
 }
 
+function update_total_price() {
+    var sum = parseFloat($("#gpu_sum").text()) + parseFloat($("#motherboard_sum").text()) + parseFloat($("#processor_sum").text()) + parseFloat($("#ram_sum").text()) +
+        parseFloat($("#ssd_sum").text()) + parseFloat($("#bp_sum").text()) + parseFloat($("#riser_sum").text()) + parseFloat($("#case_sum").text());
+    $("#total_sum").html("Потребление фермы: " + $("#intake").val() + " ваттЧас    / Итого сумма: " + sum + " рублей");
+}
+
+
+$("#intake").change(function () {
+    update_total_price();
+    $("#total_sum").hide();
+    $("#total_sum").show(200);
+
+});
 
 $("#gpu").change(function () {
     $("#table").hide();
