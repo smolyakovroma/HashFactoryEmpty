@@ -20,6 +20,12 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping(value = "/2/index")
+    public String index2() {
+        return "index2";
+    }
+
+
     @RequestMapping(value = "/beta/calculator")
     public String calc() {
         return "calculator";

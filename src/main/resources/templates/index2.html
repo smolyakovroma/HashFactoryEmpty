@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico"/>
+
+    <title>HashFactory</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="/dist/css/carousel.css" rel="stylesheet"/>
+</head>
+<!-- NAVBAR
+================================================== -->
+
+<body>
+    <div class="navbar-wrapper ">
+        <div class="container">
+
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+                        <a class="navbar-brand" href="index.html">#Место для логотипа</a>
+                    </div>
+                    <div class="navbar-collapse collapse ">
+                        <ul class="nav navbar-nav ">
+                            <li class="active"><a href="#">О проекте</a></li>
+                            <li><a href="#about1">Информация</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <!--
+             
+                            <li style="padding-right:40px;padding-top:3px;padding-left:10px"><a href="login.html"><button  type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-lock"></span> Войти</button></a></li>
+-->
+                            <li style="padding-right:40px;padding-left:10px"><button type="button" class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-lock"></span> Личный кабинет</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form class="form-signin" role="form">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <br/>
+                            <p>
+                                <h3 class="text-center">Мы свяжемся с вами!</h3>
+                            </p>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" class="form-control" placeholder="как к вам обращаться" th:required="required" th:autofocus="autofocus" value="" />
+                            <br/>
+                            <input type="email" class="form-control" placeholder="укажите ваш e-mail"  th:required="required" th:autofocus="autofocus" value="" />
+                            <br/>
+                            <input type="number" class="form-control" placeholder="укажите ваш контактный телефон" th:required="required" th:autofocus="autofocus" value="" />
+                            <br/>
+
+
+                            <p class="text-center">связаться с вами &nbsp;<select>
+                            <option data-icon="glyphicon-heart">по телефону</option>
+                            <option data-icon="glyphicon-heart">по почте</option>
+                            </select> &nbsp;&nbsp;или напишите нам сами <a style="color:black;text-shadow:none;font-weight:bold" href="mailto:info@hashfactory.ru">info&#64;hashfactory.ru</a></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>
+                            <!--
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                                        <button type="button" class="btn btn-primary">Сохранить изменения</button>
+-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="/dist/image/back.png" alt="First slide"/>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h2>Вы хотите инвестировать в майнинг, но не знаете с чего начать?</h2><br/>
+                        <p>Всё объясним и покажем</p>
+                        <p>Закупим и доставим оборудования напрямую от производителей</p>
+                        <p>Cмонтируем, настроим и будем обслуживать 24 / 7 в специально подготовленном помещение</p>
+                        <!--                        <p></p>-->
+                        <p>Функциональный личный кабинет позволит вам контролировать майнинг онлайн</p>
+                        <br/>
+                        <p>
+                            <a href="" class="btn btn-lg btn-warning" data-toggle="modal" data-target="#myModal">
+                                <spin class="glyphicon glyphicon-earphone">&nbsp;</spin>Связаться с нами</a>
+                        </p>
+
+                        <!-- Modal -->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="/dist/image/back.png" alt="Second slide"/>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Another example headline.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/dist/image/back.png" class="center" alt="Third slide"/>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>One more for good measure.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+-->
+    </div>
+    <!-- /.carousel -->
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+
+
+
+        <!-- START THE FEATURETTES -->
+
+        <!--        <hr class="featurette-divider">-->
+
+        <div class="row featurette text-center">
+            <div class="col-md-12">
+                <h1 class="cover-heading">Наши приемущества</h1>
+                <div class="row marketing">
+                    <div class="row">
+                        <p class="lead">
+                            <!--
+                            <h2>Инвестируйте в строительство крупной майнинговой фермы</h2> <br/>
+                            <h3>Наши преимущества</h3><br/>
+-->
+                            <h4>
+                                <p>• Закупка видеокарт и сопутствующего оборудования для майнина на прямую от производителя в Китае, по низким ценам и доставкой в Россию</p>
+                            </h4><br/>
+                            <h4>
+                                <p> • Качественное обслуживание вашего оборудование квалифицированным персоналом 24 / 7</p>
+                            </h4>
+                            <br/>
+                            <h4>
+                                <p> • Специально подготовленное помещение для майнинга и существенно сниженная стоимость электроэнергии</p>
+                            </h4><br/>
+                            <h4>
+                                <p> • Услуги брокера помогут вам повысить эффективность майнинга</p>
+                            </h4><br/>
+                            <h4>
+                                <p> • Мы юридически прозрачны, оборудование остается вашим и страхуеться</p>
+                            </h4><br/>
+                            <p>
+                                <a href="" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">
+                                    <spin class="glyphicon glyphicon-earphone">&nbsp;</spin>Связаться с нами</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="featurette-divider ">
+        <div class="row ">
+            <div class="col-md-9">
+                <h2>Закупка оборудования</h2><br/>
+                <p class="lead">Для вас мы напрямую закупаем оборудования у производителей в Китае и доставляем в Россию. В случаи майнинга на видеокартах, вы оплачиваете только видеокарты, остальные комплектующие для сборки ферм мы предоставляем бесплатно. Но при вашем желание, мы можем продать вам также все необходимые комплектующие.</p>
+            </div>
+            <div class="col-md-3">
+                <img class="featurette-image img-responsive" src="/dist/image/test_img.png" alt="Generic placeholder image"/>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-3">
+                <img class="featurette-image img-responsive" src="/dist/image/test_img.png"  alt="Generic placeholder image"/>
+            </div>
+            <div class="col-md-9">
+                <h2>Обслуживание вашего оборудование 24/7</h2><br/>
+                <p class="lead">После поступления вашего оборудования, наши квалифицированные сотрудники соберут, настроят и будут круглосуточно следить за исправной работай ваших ферм. В случаи поломки мы оперативно заменяем вышедшее оборудование из строя.</p>
+            </div>
+        </div>
+        <hr class="featurette-divider ">
+        <div class="row ">
+            <div class="col-md-9">
+                <h2>Специальное помещения для промышленного майнинга</h2><br/>
+                <p class="lead">Имея большой опыт майнинга, мы учли все моменты при проектирование помещения для майнинга, а также привлекали специалистов проектирования ЦОД. Благодаря собственной трансформаторной подстанции, существенно смогли снизить стоимость электроэнергии, что критично влияет сроки оккупаемости оборудования. Территория круглосуточно охраняеться.</p>
+            </div>
+            <div class="col-md-3">
+                <img class="featurette-image img-responsive" src="/dist/image/test_img.png" alt="Generic placeholder image"/>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-3">
+                <img class="featurette-image img-responsive" src="/dist/image/test_img.png"  alt="Generic placeholder image"/>
+            </div>
+            <div class="col-md-9">
+                <h2>Юридическая прозрачность</h2><br/>
+                <p class="lead">Оплаченое оборудования принадлежит вам, с нашей стороны мы оказываем услуги закупки оборудования для майнинга, обслуживания и ответственного хранения. У вас есть право забрать свое оборудование. Все оборудование страхуется.</p>
+            </div>
+        </div>
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-9">
+                <h2>Услуги брокера</h2><br/>
+                <p class="lead">Мы также предоставляем услуги брокера для более эффективного майнинга криптовалюты.</p>
+            </div>
+            <div class="col-md-3">
+                <img class="featurette-image img-responsive" src="/dist/image/test_img.png" alt="Generic placeholder image"/>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-3">
+                <img class="featurette-image img-responsive" src="/dist/image/test_img.png" alt="Generic placeholder image"/>
+            </div>
+            <div class="col-md-9">
+                <h2>Удобный и информативный личный кабинет</h2><br/>
+                <p class="lead">В личном кабинете вы сможете отслеживать работу ваших ферм в онлайн режиме все важные показатели работы и доходности ваших ферм. С помощью вэб-камер вы всегда сможете увидеть что происходит с вашим оборудованием.</p>
+            </div>
+        </div>
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+
+        <!-- FOOTER -->
+        <footer>
+            <p class="pull-left">#hashfactory.ru 2017</p>
+            <p class="pull-right">e-mail<a href="mailto:admin@hashfactory.ru">&nbspadmin&#64;hashfactory.ru</a>, twitter <a href="https://twitter.com/hashfactory_ru">@hashfactory_ru</a></p>
+        </footer>
+
+
+    </div>
+    <!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/dist/js/jquery.min.js"></script>
+    <script src="/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/js/docs.min.js"></script>
+    
+    <script type="text/javascript">
+        $('#myCarousel').carousel({
+            interval: 5000
+        })
+
+    </script>
+</body>
+
+</html>
