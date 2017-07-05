@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ru.hashfactory.empty.domain.User;
 import ru.hashfactory.empty.service.UserService;
@@ -39,7 +40,6 @@ public class LoginController {
         UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.findUserByEmail(principal.getUsername());
         modelAndView.getModel().put("user", user);
-//        modelAndView.getModel().put("name","vasua");
         modelAndView.setViewName("cabinet/dashboard");
         return modelAndView;
     }
