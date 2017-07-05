@@ -2,8 +2,10 @@ package ru.hashfactory.empty.controller;
 
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,7 +36,10 @@ public class LoginController {
     @RequestMapping(value="/cabinet/dashboard", method = RequestMethod.GET)
     public ModelAndView dashboard(Model model){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.getModel().put("name","vasua");
+        UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findUserByEmail(principal.getUsername());
+        modelAndView.getModel().put("user", user);
+//        modelAndView.getModel().put("name","vasua");
         modelAndView.setViewName("cabinet/dashboard");
         return modelAndView;
     }
@@ -43,7 +48,7 @@ public class LoginController {
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
-        modelAndView.addObject("user", user);
+        modelAndView.getModel().put("user", user);
         modelAndView.setViewName("cabinet/registration");
         return modelAndView;
     }
@@ -69,6 +74,7 @@ public class LoginController {
         return modelAndView;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value="/admin/home", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
@@ -78,6 +84,11 @@ public class LoginController {
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
         modelAndView.setViewName("admin/home");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/accessDenied")
+    public String accessDenied() {
+        return "accessDenied";
     }
 
 
