@@ -64,13 +64,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .antMatchers("/cabinet/**").permitAll()
                 .and()
-                .formLogin().loginPage("/cabinet/login").failureUrl("/cabinet/login?error=true").permitAll()
+                .formLogin().loginPage("/login").failureUrl("/login?error=true").permitAll()
                 .defaultSuccessUrl("/cabinet/dashboard")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .and().logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/cabinet/logout"))
-                .logoutSuccessUrl("/cabinet/login").and().exceptionHandling()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login").and().exceptionHandling()
                 .accessDeniedPage("/access-denied");
     }
 

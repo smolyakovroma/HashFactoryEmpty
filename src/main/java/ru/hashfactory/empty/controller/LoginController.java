@@ -1,5 +1,6 @@
 package ru.hashfactory.empty.controller;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +17,7 @@ import ru.hashfactory.empty.service.UserService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/cabinet")
+@RequestMapping("/")
 public class LoginController {
 
     @Autowired
@@ -26,15 +27,15 @@ public class LoginController {
     @RequestMapping(value="/login", method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
+        modelAndView.setViewName("/login");
         return modelAndView;
     }
 
-    @RequestMapping(value="/dashboard", method = RequestMethod.GET)
+    @RequestMapping(value="/cabinet/dashboard", method = RequestMethod.GET)
     public ModelAndView dashboard(Model model){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.getModel().put("name","vasua");
-        modelAndView.setViewName("dashboard");
+        modelAndView.setViewName("cabinet/dashboard");
         return modelAndView;
     }
 
@@ -43,7 +44,7 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
-        modelAndView.setViewName("registration");
+        modelAndView.setViewName("cabinet/registration");
         return modelAndView;
     }
 
@@ -62,7 +63,7 @@ public class LoginController {
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("registration");
+            modelAndView.setViewName("cabinet/registration");
 
         }
         return modelAndView;
