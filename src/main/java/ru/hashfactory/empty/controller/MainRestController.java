@@ -1,24 +1,24 @@
 package ru.hashfactory.empty.controller;
 
 import org.apache.commons.mail.EmailException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.hashfactory.empty.config.MailConfig;
+import ru.hashfactory.empty.service.MailService;
 
 @CrossOrigin
 @RestController
 public class MainRestController {
+    @Autowired
+    MailService mailService;
+
     @RequestMapping(value = "/sendMail")
     public void sendMail(@RequestParam("name") String name, @RequestParam("mail") String mail){
 //        ResponseEntity<String>
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    MailConfig.send(name, mail);
-                } catch (EmailException e) {
-                    e.printStackTrace();
-
-                }
+                    mailService.send(name, mail,"Заявка","Name "+name+" mail "+mail);
             }
         }).start();
 

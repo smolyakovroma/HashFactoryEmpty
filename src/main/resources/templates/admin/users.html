@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico"/>
+    <title>HashFactory</title>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <br/>
+        <a class="btn btn-primary pull-right" href="/admin/newuser">Добавить пользователя</a>
+        <br/><br/>
+        <table class="table table-striped" id="posts_list">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Имя</th>
+                <th>Email</th>
+                <th>Активирован</th>
+                <th>Сбросить пароль</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-th-each="user : ${users}">
+                <td class="message" data-th-text="${user.id}"></td>
+                <td class="message" data-th-text="${user.name}"></td>
+                <td class="message" data-th-text="${user.email}"></td>
+                <td class="message" data-th-text="${user.active}"></td>
+                <td>
+                    <a th:href="@{'/admin/newpassword/{id}'(id=${user.id})}" class="delete">
+                        <span class="fa-stack">
+                            <i class="glyphicon glyphicon-repeat"></i>
+                        </span>
+                    </a>
+                </td>
+
+                <!--<td>-->
+                    <!--<a th:href="@{'/posts/{id}/edit'(id=${post.id})}" class="edit" th:attr="name=${post.message}">-->
+                    <!--<span class="fa-stack">-->
+                        <!--<i class="glyphicon glyphicon-edit"></i>-->
+                    <!--</span>-->
+
+                    <!--</a>-->
+                <!--</td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

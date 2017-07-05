@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico"/>
+    <title>HashFactory</title>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <br/>
+        <form method="get" name="newuser_form" id="comment_form" action="/admin/adduser" role="form">
+            <div class="form-group">
+                <label for="name">Имя</label>
+                <input class="form-control" id="name" name="name" required/>
+                <br/>
+                <label for="email">Email</label>
+                <input class="form-control" id="email" name="email" required/>
+            </div>
+            <button type="submit" id="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

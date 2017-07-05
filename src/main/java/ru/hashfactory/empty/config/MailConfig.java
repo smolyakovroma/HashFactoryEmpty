@@ -13,16 +13,16 @@ public class MailConfig {
 
     }
 
-    public static void send(String name, String mail) throws EmailException {
+    public static void send(String name, String mail, String subject, String body) throws EmailException {
         Email email = new SimpleEmail();
         email.setHostName("smtp.yandex.ru");
         email.setSmtpPort(465);
         email.setAuthenticator(new DefaultAuthenticator("hashfactory@yandex.ru", "1234Zz"));
         email.setSSLOnConnect(true);
         email.setFrom("hashfactory@yandex.ru");
-        email.setSubject("Заявка");
-        email.setMsg("Name "+name+" mail "+mail);
-        email.addTo("info@hashfactory.ru");
+        email.setSubject(subject);
+        email.setMsg(body);
+        email.addTo(mail);
         email.send();
     }
 }
