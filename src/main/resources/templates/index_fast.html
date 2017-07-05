@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico"></link>
+
+    <title>HashFactory</title>
+    <link href="/dist/css/empty.css" rel="stylesheet"></link>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+
+    <link href="/dist/css/font-awesome.css" rel="stylesheet"></link>
+
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]>
+    <script src="/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+
+</head>
+
+<body>
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <br/>
+                    <p>
+                    <h4 class="text-center">Мы свяжемся с вами!</h4>
+                    </p>
+                </div>
+                <form method="post" name="send_mail" id="send_mail" action="javascript:void(null);" onsubmit="call()" role="form">
+                    <div class="modal-body">
+
+                        <input type="text" class="form-control" id="name" name="name" placeholder="как к вам обращаться"
+                               th:required="required" th:autofocus="autofocus" value="" />
+                        <br/>
+                        <input type="email" class="form-control" id="mail" name="mail" placeholder="укажите ваш e-mail"
+                               th:required="required" value="" />
+                        <br/>
+                        <p class="text-center"> &nbsp;&nbsp;или напишите нам сами <a
+                                style="color:black;text-shadow:none;font-weight:bold"
+                                href="mailto:info@hashfactory.ru">info&#64;hashfactory.ru</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-lg btn-primary btn-block" id="send" type="submit">Отправить</button>
+                        <!--
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                                    <button type="button" class="btn btn-primary">Сохранить изменения</button>
+-->
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="carousel-inner">
+        <div class="item active">
+            <!--                  bar contact-->
+            <div class="container">
+                <div class="row">
+                    <br/><a href="mailto:admin@hashfactory.ru" class="btn btn-warning  pull-left"><span
+                        class="glyphicon glyphicon-envelope"></span>&nbsp;admin&#64;hashfactory.ru</a>
+                    <a href="https://twitter.com/hashfactory_ru" class="btn btn-info  pull-right"><span
+                            class="fa fa-twitter"></span>&nbsp;twitter@hashfactory_ru</a>
+                </div>
+            </div>
+
+            <img src="/dist/image/empty1.jpg" alt="First slide"/>
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1><strong>Промышленный майнинг в России</strong>
+                    </h1><br/>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <p>
+                    <h4>Если вы инвестор или хотите стать партнером и вам не интересен "балконный" майнинг </h4>
+                    <a href="" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#mailModal">
+                        <spin class="glyphicon glyphicon-earphone">&nbsp;</spin>
+                        Свяжитесь с нами</a>
+                    </p>
+
+                    <!-- Modal -->
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="item">
+            <!--                  bar contact-->
+            <div class="container">
+                <div class="row">
+                    <br/><a href="mailto:admin@hashfactory.ru" class="btn btn-warning  pull-left"><span
+                        class="glyphicon glyphicon-envelope"></span>&nbsp;admin&#64;hashfactory.ru</a>
+                    <a href="https://twitter.com/hashfactory_ru" class="btn btn-info  pull-right"><span
+                            class="fa fa-twitter"></span>&nbsp;twitter@hashfactory_ru</a>
+                </div>
+            </div>
+
+            <img src="/dist/image/empty2.jpg" alt="Second slide"/>
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1><strong>Копать будем много и глубоко =) </strong></h1><br/>
+
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <p>
+                    <h4>Если вы инвестор или хотите стать партнером и вам не интересен "балконный" майнинг </h4>
+                    <a href="" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#mailModal">
+                        <spin class="glyphicon glyphicon-earphone">&nbsp;</spin>
+                        Свяжитесь с нами</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <!--                  bar contact-->
+            <div class="container">
+                <div class="row">
+                    <br/><a href="mailto:admin@hashfactory.ru" class="btn btn-warning  pull-left"><span
+                        class="glyphicon glyphicon-envelope"></span>&nbsp;admin&#64;hashfactory.ru</a>
+                    <a href="https://twitter.com/hashfactory_ru" class="btn btn-info  pull-right"><span
+                            class="fa fa-twitter"></span>&nbsp;twitter@hashfactory_ru</a>
+                </div>
+            </div>
+
+            <img src="/dist/image/empty3.jpg" class="center" alt="Third slide"/>
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1><strong>Электроэнергию в кэш!</strong></h1>
+
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <p>
+                    <h4>Если вы инвестор или хотите стать партнером и вам не интересен "балконный" майнинг </h4>
+                    <a href="" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#mailModal">
+                        <spin class="glyphicon glyphicon-earphone">&nbsp;</spin>
+                        Свяжитесь с нами</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="infoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center">Всё получилось =)</h2><br/>
+            </div>
+            <div class="modal-body">
+                <h4 class="modal-title text-center">В ближайшее время мы свяжемся с вами</h4><br/>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" type="button" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/dist/js/jquery.min.js"></script>
+<script src="/dist/js/bootstrap.min.js"></script>
+<script src="/dist/js/empty.js"></script>
+
+<script type="text/javascript">
+    function call(){
+        var name = $("#name").val();
+        var mail = $("#mail").val();
+        var msg   = $('#send_mail').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'http://hashfactory.ru/sendMail/',
+            data: msg,
+            success: function(data) {
+                $('#mailModal').modal('hide')
+                $('#infoModal').modal()
+            },
+            error:  function(xhr, str){
+                alert('Возникла ошибка: ' + xhr.responseCode);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+//        $('#infoModal').modal()
+
+//        $(document).on("click", "#send", function () {
+//            var name = $("#name").val();
+//            var mail = $("#mail").val();
+//            if(name==="" || mail===""){
+//                console.log("Заполнить нужно все поля!");
+//                return;
+//            }
+//            $.ajax({
+//                url: "http://localhost:8080/sendMail/" + name+"/"+mail,
+//                type: "GET",
+//                dataType: "text"
+//            }).done(function(data) {
+//                console.log("ok")
+//                $('#mailModal').modal('hide')
+//                $('#infoModal').modal()
+////                index++;
+////                $("<div class='panel panel-primary'><div class='panel-heading'>" + index + "</div><div class='panel-body'>" + data + "</div></div>")
+////                    .appendTo("#messages");
+//            }).fail(function(){
+//                console.log("error")
+//            });
+//
+//        });
+    });
+</script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-package ru.hashfactory.empty;
+package ru.hashfactory.empty.config;
 
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;

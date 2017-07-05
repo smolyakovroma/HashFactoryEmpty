@@ -1,10 +1,11 @@
-package ru.hashfactory.empty;
+package ru.hashfactory.empty.controller;
 
 import org.apache.commons.mail.EmailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.hashfactory.empty.config.MailConfig;
 
 @Controller
 public class MainController {

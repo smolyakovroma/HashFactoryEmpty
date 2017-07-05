@@ -1,11 +1,8 @@
-package ru.hashfactory.empty;
+package ru.hashfactory.empty.controller;
 
 import org.apache.commons.mail.EmailException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Random;
+import ru.hashfactory.empty.config.MailConfig;
 
 @CrossOrigin
 @RestController
