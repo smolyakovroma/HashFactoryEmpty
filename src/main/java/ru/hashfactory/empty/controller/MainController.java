@@ -32,10 +32,24 @@ public class MainController {
     }
 
 
+    @RequestMapping(value = "/information")
+    public String information() {
+        return "information";
+    }
+
+
+    @RequestMapping(value = "/aboutus")
+    public String aboutus() {
+        return "aboutus";
+    }
+
+
+
     @RequestMapping(value = "/beta/calculator")
     public String calc() {
         return "calculator";
     }
+
 
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
