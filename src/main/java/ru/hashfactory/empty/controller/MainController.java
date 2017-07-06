@@ -51,17 +51,30 @@ public class MainController {
 
     //TODO Выдавать ошибку что не правильно ввели оба пароля при редеректе
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registrationCompleted(@RequestParam String email, @RequestParam String password, @RequestParam String password2) {
-        if(password.equals(password2)){
+    public ModelAndView registrationCompleted(@RequestParam String email, @RequestParam String name, @RequestParam String password, @RequestParam String password2) {
+        ModelAndView modelAndView = new ModelAndView();
+        if(password.equals(password2) & !name.trim().isEmpty()){
             User user = userService.findUserByEmail(email.trim());
+            user.setName(name);
             user.setPassword(password.trim());
             user.setActive(1);
             userService.saveUser(user);
-            return "redirect:/login";
+            modelAndView.setViewName("login");
+            return modelAndView;
         }
+
+        if(!password.equals(password2)) {
+            modelAndView.addObject("error", "Пароли должны совпадать");
+        }else if(name.trim().isEmpty()){
+            modelAndView.addObject("error", "Заполните имя");
+    }
         //TODO в продакщене заменить
 //        return "redirect:/www.hashfactory/registration?email="+email.trim();
-        return "redirect:/localhost:8080/registration?email="+email.trim();
+        modelAndView.addObject("name",name.trim());
+        modelAndView.addObject("email",email.trim());
+        modelAndView.setViewName("registration");
+
+        return modelAndView;
     }
 //    @RequestMapping(value = "/contact", method = RequestMethod.POST)
 //    public void contact(@RequestParam("name") String name, @RequestParam("mail") String mail){

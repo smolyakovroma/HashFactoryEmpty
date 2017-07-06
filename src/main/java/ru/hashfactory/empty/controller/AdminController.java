@@ -65,7 +65,7 @@ public class AdminController {
             userService.saveUser(user);
             StringBuilder builder = new StringBuilder();
             builder.append("<h2>Вы зарегистрированны на www.hashfactory.ru</h2><br/>")
-                    .append("<p>для подтверждения регистрации установите пароль к личному кабинету</p><br/>")
+                    .append("<p>для подтверждения регистрации пройдите по ссылки и  установите пароль к личному кабинету</p><br/>")
             .append("<a href='www.hashfactory.ru/registration?email="+email.trim()+"'>Перейти к регистрации</a><br/>")
             .append("<p>Служба поддежки <a href='mailto:admin@hashactory.ru'>admin@hashactory.ru</a></p><br/>");
             mailService.send(name, email, "Регистрация в личном кабинете www.hashfactory.ru", builder.toString());

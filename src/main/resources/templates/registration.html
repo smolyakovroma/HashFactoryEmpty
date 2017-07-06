@@ -16,8 +16,12 @@
 
 
     <form th:action="@{/registration}" method="POST" class="form-signin">
+        <div align="center" class="alert alert-danger" th:if="${error}">
+            <p style="font-size: 20; color: #FF1C19;" th:text="${error}">Ошибка!</p>
+        </div>
         <h3 class="form-signin-heading text-center">Подтвердите пароль для <b th:text="${email}"></b></h3>
         <br/>
+        <input type="text" id="name" name="name" th:value="${name}" placeholder="Как к вам обращяться" class="form-control"><br/>
         <input type="hidden" id="email" name="email" th:value="${email}">
         <input type="password" id="password" name="password" placeholder="Пароль" class="form-control"/> <br/>
         <input type="password" id="password2" name="password2" placeholder="Повторите пароль" class="form-control"/> <br/>
