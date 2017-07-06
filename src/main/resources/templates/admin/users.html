@@ -20,6 +20,7 @@
                 <th>Email</th>
                 <th>Активирован</th>
                 <th>Сбросить пароль</th>
+                <th>Редактировать</th>
             </tr>
             </thead>
             <tbody>
@@ -35,7 +36,13 @@
                         </span>
                     </a>
                 </td>
-
+                <td>
+                    <a th:href="@{'/admin/edit/{id}'(id=${user.id})}" class="delete">
+                        <span class="fa-stack">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </span>
+                    </a>
+                </td>
                 <!--<td>-->
                     <!--<a th:href="@{'/posts/{id}/edit'(id=${post.id})}" class="edit" th:attr="name=${post.message}">-->
                     <!--<span class="fa-stack">-->

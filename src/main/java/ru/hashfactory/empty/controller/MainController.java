@@ -1,14 +1,11 @@
 package ru.hashfactory.empty.controller;
 
-import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import ru.hashfactory.empty.config.MailConfig;
 import ru.hashfactory.empty.domain.User;
 import ru.hashfactory.empty.service.UserService;
 
@@ -44,12 +41,18 @@ public class MainController {
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration(@RequestParam String email) {
         ModelAndView modelAndView = new ModelAndView();
+        User user = userService.findUserByEmail(email.trim());
+
+        if(user==null || user.getActive()!=0){
+            modelAndView.setViewName("login");
+            return modelAndView;
+        }
+
         modelAndView.setViewName("registration");
         modelAndView.addObject("email", email);
         return modelAndView;
     }
 
-    //TODO Выдавать ошибку что не правильно ввели оба пароля при редеректе
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView registrationCompleted(@RequestParam String email, @RequestParam String name, @RequestParam String password, @RequestParam String password2) {
         ModelAndView modelAndView = new ModelAndView();
@@ -58,7 +61,7 @@ public class MainController {
             user.setName(name);
             user.setPassword(password.trim());
             user.setActive(1);
-            userService.saveUser(user);
+            userService.saveNewUser(user);
             modelAndView.setViewName("login");
             return modelAndView;
         }
@@ -76,20 +79,5 @@ public class MainController {
 
         return modelAndView;
     }
-//    @RequestMapping(value = "/contact", method = RequestMethod.POST)
-//    public void contact(@RequestParam("name") String name, @RequestParam("mail") String mail){
-//
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-//                        MailConfig.send(name, mail);
-//                    } catch (EmailException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }).start();
 
-//        return "redirect:/";
-//    }
 }

@@ -29,10 +29,20 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void saveUser(User user) {
+    public User findUserById(Integer id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
+    public void saveNewUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }
+
+    @Override
+    public void saveUser(User user) {
         userRepository.save(user);
     }
 

@@ -40,6 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             throws Exception {
         auth.
                 jdbcAuthentication()
+
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource)
@@ -68,7 +69,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         authorizeRequests()
                 .anyRequest().authenticated()
                 .antMatchers("/cabinet/**","/admin/**").permitAll()
-                .and()
+                .and().csrf().disable() //TODO отключил csrf что бы проходили ПОСТ запросы, но жто временное решение
                 .formLogin().loginPage("/login").failureUrl("/login?error=true").permitAll()
                 .defaultSuccessUrl("/cabinet/dashboard")
                 .usernameParameter("email")

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico"/>
+    <title>HashFactory</title>
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <br/>
+        <form method="post" name="edit_form" id="comment_form" action="/admin/edit" role="form">
+            <div class="form-group">
+                <input class="form-control" type="hidden" id="id" name="id" th:value="${user.id}" required/>
+                <label for="name">Имя</label>
+                <input class="form-control" type="text" id="name" name="name"  th:value="${user.name}" required/>
+                <br/>
+                <label for="email">Email</label>
+                <input class="form-control" type="email" id="email" name="email"  th:value="${user.email}" required/>
+                <br/>
+                <label for="email">Активен</label>
+                <input class="form-control" type="number" id="active" name="active"  th:value="${user.active}" required/>
+            </div>
+            <button type="submit" id="submit" class="btn btn-primary">Изменить</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
