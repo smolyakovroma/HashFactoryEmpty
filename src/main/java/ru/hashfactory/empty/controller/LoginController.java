@@ -27,25 +27,13 @@ public class LoginController {
     private UserService userService;
 
 
+
     @RequestMapping(value="/login", method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/login");
         return modelAndView;
     }
-
-    @RequestMapping(value="/cabinet/dashboard", method = RequestMethod.GET)
-    public ModelAndView dashboard(Model model){
-        ModelAndView modelAndView = new ModelAndView();
-        UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userService.findUserByEmail(principal.getUsername());
-        modelAndView.getModel().put("user", user);
-        modelAndView.setViewName("cabinet/dashboard");
-        return modelAndView;
-    }
-
-
-
 
     @RequestMapping(value = "/accessDenied")
     public String accessDenied() {

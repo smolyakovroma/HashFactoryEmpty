@@ -2,14 +2,13 @@ package ru.hashfactory.empty.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.hashfactory.empty.domain.User;
 import ru.hashfactory.empty.service.UserService;
 
 @Controller
+@SessionAttributes("user")
 public class MainController {
 
     //TODO обнвление курс доллара
@@ -21,10 +20,23 @@ public class MainController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/")
-    public String main() {
-        return "index";
+    @ModelAttribute(name = "user")
+    public User user(){
+        return new User();
     }
+
+    @RequestMapping(value = "/")
+    public ModelAndView main(@ModelAttribute User user) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.getModel().put("user", user);
+        modelAndView.setViewName("index");
+        return modelAndView;
+    }
+
+//    @RequestMapping(value = "/error")
+//    public String error() {
+//        return "error";
+//    }
 
     @RequestMapping(value = "/2/index")
     public String index2() {
