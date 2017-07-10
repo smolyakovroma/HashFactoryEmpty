@@ -8,6 +8,7 @@ import ru.hashfactory.empty.domain.User;
 import ru.hashfactory.empty.service.UserService;
 
 @Controller
+@RequestMapping
 @SessionAttributes("user")
 public class MainController {
 
@@ -31,6 +32,19 @@ public class MainController {
         modelAndView.getModel().put("user", user);
         modelAndView.setViewName("index");
         return modelAndView;
+    }
+
+
+    @RequestMapping(value="/login", method = RequestMethod.GET)
+    public ModelAndView login(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/accessDenied")
+    public String accessDenied() {
+        return "accessDenied";
     }
 
 //    @RequestMapping(value = "/error")

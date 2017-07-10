@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.hashfactory.empty</groupId>
-    <artifactId>empty</artifactId>
+    <artifactId>hf</artifactId>
     <version>1</version>
     <packaging>jar</packaging>
 
