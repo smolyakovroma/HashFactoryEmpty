@@ -18,7 +18,7 @@ public class MainRestController {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                    mailService.send(name, mail,"Заявка","Name "+name+" mail "+mail+"  tel "+tel);
+                    mailService.send(name, "info@hashfactory.ru","Заявка","Name "+name+" mail "+mail+"  tel "+tel);
             }
         }).start();
 

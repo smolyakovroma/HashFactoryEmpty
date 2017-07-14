@@ -551,7 +551,7 @@
         $.ajax({
             type: 'POST',
             //TODO в продакшене заменить! 'http://hashfactory.ru/sendMail/'
-            url: 'http://hashfactory.ru/sendMail/',
+            url: 'http://localhost:8080/sendMail/',
             data: msg,
             success: function (data) {
                 $('#mailModal').modal('hide')
