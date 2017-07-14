@@ -63,9 +63,10 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-3 col-md-2 sidebar" th:if="${user.typeClient} > 0">
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="/cabinet/dashboard">Обзор</a></li>
+
                 <li><a href="/cabinet/ferms">Фермы</a></li>
                 <li><a href="/cabinet/dashboard">Видеонаблюдение</a></li>
                 <li><a href="/cabinet/dashboard">Анализ доходности</a></li>
@@ -82,6 +83,36 @@
                 <li><a href="/cabinet/dashboard">Новости компании</a></li>
                 <li><a href="/cabinet/dashboard">Обратная связь</a></li>
             </ul>
+
+            <ul class="nav nav-sidebar" th:if="${user.typeClient} > 1">
+                <li><a href="/cabinet/dashboard">Для партнёров</a></li>
+                <li><a href="/cabinet/dashboard">Юридическая информация</a></li>
+                <li><a href="/cabinet/dashboard">Инвестиции</a></li>
+            </ul>
+
+            <ul class="nav nav-sidebar" th:if="${user.typeClient} > 2">
+
+                <li><a href="/cabinet/ferms">Покупка видеокарт</a></li>
+                <li><a href="/cabinet/dashboard">Инвест предложения</a></li>
+                <li><a href="/cabinet/dashboard">Доставка</a></li>
+
+            </ul>
+            <ul class="nav nav-sidebar" th:if="${user.typeClient} > 2">
+
+                <li><a href="/admin/users">Админка</a></li>
+
+            </ul>
+        </div>
+
+        <div class="col-sm-3 col-md-2 sidebar" th:if="${user.typeClient} == 0">
+            <ul class="nav nav-sidebar">
+
+                <li class="active"><a href="/cabinet/ferms">Покупка видеокарт</a></li>
+                <li><a href="/cabinet/dashboard">Инвест предложения</a></li>
+                <li><a href="/cabinet/dashboard">Доставка</a></li>
+            </ul>
+
+
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

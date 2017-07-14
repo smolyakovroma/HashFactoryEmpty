@@ -13,12 +13,12 @@ public class MainRestController {
     MailService mailService;
 
     @RequestMapping(value = "/sendMail")
-    public void sendMail(@RequestParam("name") String name, @RequestParam("mail") String mail){
+    public void sendMail(@RequestParam("name") String name, @RequestParam("mail") String mail, @RequestParam("tel") String tel){
 //        ResponseEntity<String>
         new Thread(new Runnable() {
             @Override
             public void run() {
-                    mailService.send(name, mail,"Заявка","Name "+name+" mail "+mail);
+                    mailService.send(name, mail,"Заявка","Name "+name+" mail "+mail+"  tel "+tel);
             }
         }).start();
 

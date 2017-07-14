@@ -22,7 +22,7 @@ public class MainController {
     UserService userService;
 
     @ModelAttribute(name = "user")
-    public User user(){
+    public User user() {
         return new User();
     }
 
@@ -35,8 +35,8 @@ public class MainController {
     }
 
 
-    @RequestMapping(value="/login", method = RequestMethod.GET)
-    public ModelAndView login(){
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
@@ -70,12 +70,10 @@ public class MainController {
     }
 
 
-
     @RequestMapping(value = "/beta/calculator")
     public String calc() {
         return "calculator";
     }
-
 
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -83,7 +81,7 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
         User user = userService.findUserByEmail(email.trim());
 
-        if(user==null || user.getActive()!=0){
+        if (user == null || user.getActive() != 0) {
             modelAndView.setViewName("login");
             return modelAndView;
         }
@@ -96,7 +94,7 @@ public class MainController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView registrationCompleted(@RequestParam String email, @RequestParam String name, @RequestParam String password, @RequestParam String password2) {
         ModelAndView modelAndView = new ModelAndView();
-        if(password.equals(password2) & !name.trim().isEmpty()){
+        if (password.equals(password2) & !name.trim().isEmpty()) {
             User user = userService.findUserByEmail(email.trim());
             user.setName(name);
             user.setPassword(password.trim());
@@ -106,15 +104,13 @@ public class MainController {
             return modelAndView;
         }
 
-        if(!password.equals(password2)) {
+        if (!password.equals(password2)) {
             modelAndView.addObject("error", "Пароли должны совпадать");
-        }else if(name.trim().isEmpty()){
+        } else if (name.trim().isEmpty()) {
             modelAndView.addObject("error", "Заполните имя");
-    }
-        //TODO в продакщене заменить
-//        return "redirect:/www.hashfactory/registration?email="+email.trim();
-        modelAndView.addObject("name",name.trim());
-        modelAndView.addObject("email",email.trim());
+        }
+        modelAndView.addObject("name", name.trim());
+        modelAndView.addObject("email", email.trim());
         modelAndView.setViewName("registration");
 
         return modelAndView;
