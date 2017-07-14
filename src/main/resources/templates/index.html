@@ -315,7 +315,7 @@
             <h2>Специальное помещения для промышленного майнинга</h2><br/>
             <p class="lead">Имея большой опыт майнинга, мы учли все моменты при проектирование помещения для майнинга, а
                 также привлекали специалистов проектирования ЦОД. Благодаря собственной трансформаторной подстанции,
-                существенно смогли снизить стоимость электроэнергии, что критично влияет сроки оккупаемости
+                существенно смогли снизить стоимость электроэнергии, что критично влияет на сроки оккупаемости
                 оборудования. Территория круглосуточно охраняеться.</p>
         </div>
         <div class="col-md-5">
@@ -344,7 +344,8 @@
 
         <div class="col-md-7">
             <h2>Услуги брокера</h2><br/>
-            <p class="lead">Мы также предоставляем услуги брокера для более эффективного майнинга криптовалюты.</p>
+            <p class="lead">Мы также предоставляем услуги брокера для более эффективного майнинга криптовалюты.
+            </p>
         </div>
         <div class="col-md-5">
             <img class="featurette-image img-responsive" src="/dist/image/r5.png"
@@ -362,7 +363,7 @@
         <div class="col-md-7">
             <h2>Удобный и информативный личный кабинет</h2><br/>
             <p class="lead">В личном кабинете вы сможете отслеживать работу ваших ферм в онлайн режиме все важные
-                показатели работы и доходности ваших ферм. С помощью вэб-камер вы всегда сможете увидеть что происходит
+                показатели работы и доходности ваших ферм. С помощью вэб-камер вы всегда можете увидеть что происходит
                 с вашим оборудованием.</p>
         </div>
     </div>
@@ -475,7 +476,8 @@
 
 <div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="form-signin" method="post" name="send_mail" id="send_mail" action="javascript:void(null);" onsubmit="call()" role="form">
+        <!--<form class="form-signin" method="post" name="send_mail" id="send_mail" action="javascript:void(null);" onsubmit="call()" role="form">-->
+        <form th:action="@{/sendMail}" method="POST" class="form-signin">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

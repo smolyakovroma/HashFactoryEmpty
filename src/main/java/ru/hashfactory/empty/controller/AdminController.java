@@ -93,7 +93,7 @@ public class AdminController {
             StringBuilder builder = new StringBuilder();
 
             builder.append("<table cellpadding=30 style='margin-top:20px; margin-left:30px;' border='0'>");
-            builder.append("<tr><td align=center><img src='dist/image/formail1.png' /></td>");
+            builder.append("<tr><td align=center><img src='http://hashfactory.ru/open/formail1.png' /></td>");
             builder.append("<td align=center><a href='www.hashfactory.ru'><img src='hashfactory.ru/open/logo.png' alt='www.hashfactory.ru' /></a></td></tr>");
             builder.append("<tr><td align=center colspan='2'><br/><h2>Вы зарегистрированны на www.hashfactory.ru</h2>");
             builder.append("<h3>для подтверждения регистрации пройдите по ссылки и установите пароль к личному кабинету</h3><br/></td></tr>");
