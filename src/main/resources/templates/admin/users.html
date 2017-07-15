@@ -34,7 +34,7 @@
                 <th>Имя</th>
                 <th>Email</th>
                 <th>Активирован</th>
-                <th>Сбросить пароль</th>
+                <!--<th>Сбросить пароль</th>-->
                 <th>Редактировать</th>
             </tr>
             </thead>
@@ -44,13 +44,13 @@
                 <td class="message" data-th-text="${user.name}"></td>
                 <td class="message" data-th-text="${user.email}"></td>
                 <td class="message" data-th-text="${user.active}"></td>
-                <td>
-                    <a th:href="@{'/admin/newpassword/{id}'(id=${user.id})}" class="delete">
-                        <span class="fa-stack">
-                            <i class="glyphicon glyphicon-repeat"></i>
-                        </span>
-                    </a>
-                </td>
+                <!--<td>-->
+                    <!--<a th:href="@{'/admin/newpassword/{email}'(email=${user.email})}" class="delete" onclick="recovery()">-->
+                        <!--<span class="fa-stack">-->
+                            <!--<i class="glyphicon glyphicon-repeat"></i>-->
+                        <!--</span>-->
+                    <!--</a>-->
+                <!--</td>-->
                 <td>
                     <a th:href="@{'/admin/edit/{id}'(id=${user.id})}" class="delete">
                         <span class="fa-stack">
@@ -71,5 +71,7 @@
         </table>
     </div>
 </div>
+
+
 </body>
 </html>

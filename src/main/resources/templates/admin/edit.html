@@ -40,9 +40,35 @@
                 <label for="typeClient">Тип клиента (0-покупатель, 1-инвестор, 2-партнёр, 3-админ</label>
                 <input class="form-control" type="number" id="typeClient" name="typeClient"  th:value="${user.typeClient}" required/>
             </div>
-            <button type="submit" id="submit" class="btn btn-primary">Изменить</button>
+            <button type="submit" id="submit" class="btn btn-primary pull-right">Изменить</button>
         </form>
+        <br/><br/>
+        <div class="alert alert-danger text-center"><button type="button" id="recovery" onclick="recovery()" class="btn btn-warning pull-center">Сбросить пароль</button></div>
+
     </div>
 </div>
+
+<script src="/dist/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+
+    function recovery() {
+
+        var email = $("#email").val();
+        console.log("click!");
+        $.ajax({
+            type: 'POST',
+            url: '/recovery',
+            data: 'email='+email,
+            success: function (data) {
+                alert("Для "+email+" пароль сброшен и отправленно письмо для восстановления");
+            },
+            error: function (xhr, str) {
+                alert('Возникла ошибка: ' + xhr.responseCode);
+            }
+        });
+    }
+</script>
 </body>
 </html>

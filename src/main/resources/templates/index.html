@@ -190,13 +190,13 @@
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<div class="container">
-    <div class="row">
-        <h3>Наша компания предаставляет нашим клиентам услуги хостингом майнинговых ферм полного цикла.
-            Сюда включено закупка оборудования по оптимальным ценам, монтаж оборудования. </h3>
-    </div>
-    <br/>    <br/>    <br/>
-</div>
+<!--<div class="container">-->
+    <!--<div class="row">-->
+        <!--<h3>Наша компания предаставляет нашим клиентам услуги хостингом майнинговых ферм полного цикла.-->
+            <!--Сюда включено закупка оборудования по оптимальным ценам, монтаж оборудования. </h3>-->
+    <!--</div>-->
+    <!--<br/>    <br/>    <br/>-->
+<!--</div>-->
 
 
 <div class="jumbotron">
@@ -476,8 +476,8 @@
 
 <div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <!--<form class="form-signin" method="post" name="send_mail" id="send_mail" action="javascript:void(null);" onsubmit="call()" role="form">-->
-        <form th:action="@{/sendMail}" method="POST" class="form-signin">
+        <form class="form-signin" method="post" name="send_mail" id="send_mail" action="javascript:void(null);" onsubmit="call()" role="form">
+        <!--<form th:action="@{/sendMail}" method="POST" class="form-signin">-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -553,7 +553,7 @@
         $.ajax({
             type: 'POST',
             //TODO в продакшене заменить! 'http://hashfactory.ru/sendMail/'
-            url: 'http://localhost:8080/sendMail/',
+            url: '/sendMail',
             data: msg,
             success: function (data) {
                 $('#mailModal').modal('hide')

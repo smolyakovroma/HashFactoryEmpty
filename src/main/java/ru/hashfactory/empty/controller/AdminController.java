@@ -21,9 +21,10 @@ import ru.hashfactory.empty.service.UserService;
 public class AdminController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
     @Autowired
-    MailService mailService;
+    private MailService mailService;
+
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView home() {
@@ -42,8 +43,8 @@ public class AdminController {
         return "admin/users";
     }
 
-    @RequestMapping(value = "/newpassword/{id}", method = RequestMethod.GET)
-    public String newPassword(@PathVariable int id) {
+    @RequestMapping(value = "/newpassword/{email}", method = RequestMethod.GET)
+    public String newPassword(@PathVariable String email) {
         return "redirect:/admin/users";
     }
 
@@ -92,12 +93,12 @@ public class AdminController {
             userService.saveNewUser(user);
             StringBuilder builder = new StringBuilder();
 
-            builder.append("<table cellpadding=30 style='margin-top:20px; margin-left:30px;' border='0'>");
-            builder.append("<tr><td align=center><img src='http://hashfactory.ru/open/formail1.png' /></td>");
-            builder.append("<td align=center><a href='www.hashfactory.ru'><img src='hashfactory.ru/open/logo.png' alt='www.hashfactory.ru' /></a></td></tr>");
-            builder.append("<tr><td align=center colspan='2'><br/><h2>Вы зарегистрированны на www.hashfactory.ru</h2>");
-            builder.append("<h3>для подтверждения регистрации пройдите по ссылки и установите пароль к личному кабинету</h3><br/></td></tr>");
-            builder.append("<tr><td colspan='2' align=center><h3><a href='www.hashfactory.ru/registration?email=" + email.trim() + "'>Перейти</a></h3><br/><br/></td></tr>");
+            builder.append("<table cellpadding=15 style='margin-top:10px; margin-left:20px;' border='0'>");
+            builder.append("<tr><td align=center  colspan='2'><a href='www.hashfactory.ru'>logo</a></td></tr>");
+            builder.append("<tr><td align=center><br/><h2>Вы зарегистрированны на www.hashfactory.ru</h2>");
+            builder.append("<h3>для подтверждения регистрации пройдите по ссылки и установите пароль к личному кабинету</h3><br/>");
+            builder.append("<h3><a href='www.hashfactory.ru/registration?email=" + email.trim() + "'>Перейти</a></h3><br/><br/></td>");
+            builder.append("<td align=center>team3</td></tr>");
             builder.append("<tr><td></td><td align=right><p>Служба поддежки <a href='mailto:admin@hashactory.ru'>admin@hashactory.ru</a></p><br/></td></tr></table>");
 
             mailService.send(name, email, "Регистрация в личном кабинете www.hashfactory.ru", builder.toString());

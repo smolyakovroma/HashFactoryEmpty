@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.hashfactory.empty.domain.User;
+import ru.hashfactory.empty.service.MailService;
 import ru.hashfactory.empty.service.UserService;
 
 @Controller
@@ -22,12 +23,15 @@ public class MainController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    MailService mailService;
+
     @ModelAttribute(name = "user")
     public User user() {
         return new User();
     }
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = {"/","/index"})
     public ModelAndView main(@ModelAttribute User user) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.getModel().put("user", user);
@@ -78,14 +82,21 @@ public class MainController {
 
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public ModelAndView registration(@RequestParam String email) {
+    public ModelAndView registration(@RequestParam String email, @RequestParam(defaultValue = "false", required = false) boolean recovery) {
         ModelAndView modelAndView = new ModelAndView();
         User user = userService.findUserByEmail(email.trim());
+
+        if (recovery){
+            user.setActive(0);
+            userService.saveUser(user);
+        }
 
         if (user == null || user.getActive() != 0) {
             modelAndView.setViewName("login");
             return modelAndView;
         }
+
+
 
         modelAndView.setViewName("registration");
         modelAndView.addObject("email", email);
@@ -113,6 +124,45 @@ public class MainController {
         modelAndView.addObject("name", name.trim());
         modelAndView.addObject("email", email.trim());
         modelAndView.setViewName("registration");
+
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/recovery", method = RequestMethod.GET)
+    public ModelAndView recovery() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("recovery");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/recovery", method = RequestMethod.POST)
+    public ModelAndView recoveryCompleted(@RequestParam String email) {
+        ModelAndView modelAndView = new ModelAndView();
+        User user = userService.findUserByEmail(email.trim());
+
+        if (user!=null) {
+            StringBuilder builder = new StringBuilder();
+
+            builder.append("<table cellpadding=15 style='margin-top:10px; margin-left:20px;' border='0'>");
+            builder.append("<tr><td align=center  colspan='2'><a href='www.hashfactory.ru'>logo</a></td></tr>");
+            builder.append("<tr><td align=center ><br/><h2>Восстановление пароля</h2>");
+            builder.append("<h3>Вы сделали запрос на восстановление пароля к личному кабинету</h3><br/>");
+            builder.append("<h3>Для продолжения процедуры <a href='www.hashfactory.ru/registration?email=" + email.trim() + "&recovery=true'>Перейти</a></h3><br/>");
+            builder.append("<h3>Если вы этого неделали, проигнорируйте письмо</h3><br/></td>");
+            builder.append("<td align=center>team4</td></tr>");
+            builder.append("<tr><td></td><td align=right><p>Служба поддежки <a href='mailto:admin@hashactory.ru'>admin@hashactory.ru</a></p><br/></td></tr></table>");
+
+            mailService.send(null, user.getEmail(), "Запрос на восстановление пароля", builder.toString());
+
+            modelAndView.setViewName("redirect:/");
+            return modelAndView;
+        }
+
+
+        modelAndView.addObject("error", "E-mail не найден!");
+
+        modelAndView.setViewName("recovery");
 
         return modelAndView;
     }
