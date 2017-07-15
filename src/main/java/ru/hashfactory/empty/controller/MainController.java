@@ -75,6 +75,12 @@ public class MainController {
     }
 
 
+    @RequestMapping(value = "/shop")
+    public String shop() {
+        return "shop";
+    }
+
+
     @RequestMapping(value = "/beta/calculator")
     public String calc() {
         return "calculator";

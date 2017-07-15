@@ -22,6 +22,7 @@ public class MailConfig {
     private static String cid3;
     private static String cid4;
     private static String cid5;
+
     static {
 
 
@@ -32,7 +33,6 @@ public class MailConfig {
             url3 = new URL("http://hashfactory.ru/open/formail3.png");
             url4 = new URL("http://hashfactory.ru/open/formail4.png");
             url5 = new URL("http://hashfactory.ru/open/formail5.png");
-
 
 
         } catch (MalformedURLException e) {
@@ -52,21 +52,33 @@ public class MailConfig {
         email.setSmtpPort(465);
         email.setAuthenticator(new DefaultAuthenticator("hashfactory@yandex.ru", "1234Zz"));
         email.setSSLOnConnect(true);
-        email.setFrom("hashfactory@yandex.ru","HashFactory.ru");
+        email.setFrom("hashfactory@yandex.ru", "HashFactory.ru");
 
-        cid = email.embed(url, "logo");
-        cid1 = email.embed(url1, "team1");
-        cid2 = email.embed(url1, "team2");
-        cid3 = email.embed(url1, "team3");
-        cid4 = email.embed(url1, "team4");
-        cid5 = email.embed(url1, "team5");
+        if (body.indexOf("logo") > 0) {
+            cid = email.embed(url, "logo");
+            body = body.replace("logo", "<img src=\"cid:" + cid + "\" alt='logo'></html>");
+        }
+        if (body.indexOf("team1") > 0) {
+            cid1 = email.embed(url1, "team1");
+            body = body.replace("team1", "<img src=\"cid:" + cid1 + "\" alt='team'></html>");
+        }
+        if (body.indexOf("team2") > 0) {
+            cid2 = email.embed(url2, "team2");
+            body = body.replace("team2", "<img src=\"cid:" + cid2 + "\" alt='team'></html>");
+        }
+        if (body.indexOf("team3") > 0) {
+            cid3 = email.embed(url3, "team3");
+            body = body.replace("team3", "<img src=\"cid:" + cid3 + "\" alt='team'></html>");
+        }
+        if (body.indexOf("team4") > 0) {
+            cid4 = email.embed(url4, "team4");
+            body = body.replace("team4", "<img src=\"cid:" + cid4 + "\" alt='team'></html>");
+        }
+        if (body.indexOf("team5") > 0) {
+            cid5 = email.embed(url5, "team5");
+            body = body.replace("team5", "<img src=\"cid:" + cid5 + "\" alt='team'></html>");
+        }
 
-        body = body.replace("logo", "<img src=\"cid:"+cid+"\" alt='logo'></html>");
-        body = body.replace("team1", "<img src=\"cid:"+cid1+"\" alt='team'></html>");
-        body = body.replace("team2", "<img src=\"cid:"+cid2+"\" alt='team'></html>");
-        body = body.replace("team3", "<img src=\"cid:"+cid3+"\" alt='team'></html>");
-        body = body.replace("team4", "<img src=\"cid:"+cid4+"\" alt='team'></html>");
-        body = body.replace("team5", "<img src=\"cid:"+cid5+"\" alt='team'></html>");
         // set the html message
         email.setSubject(subject);
         email.setHtmlMsg(body);

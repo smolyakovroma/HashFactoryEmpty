@@ -92,7 +92,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 .antMatchers("/resources/**", "/open/**", "/public/**", "/static/**", "/dist/**", "/assets/**"
-                        ,"/index","/","/registration","/information","/aboutus", "/sendMail","/recovery");
+                        ,"/index","/","/registration","/information","/aboutus", "/sendMail","/recovery","/shop");
     }
 
     @Bean

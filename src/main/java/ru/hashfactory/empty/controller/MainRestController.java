@@ -13,7 +13,7 @@ public class MainRestController {
     MailService mailService;
 
     @RequestMapping(value = "/sendMail")
-    public void sendMail(@RequestParam("name") String name, @RequestParam("mail") String mail, @RequestParam("tel") String tel) {
+    public String sendMail(@RequestParam("name") String name, @RequestParam("mail") String mail, @RequestParam("tel") String tel) {
 //        ResponseEntity<String>
 
         mailService.send(name, "info@hashfactory.ru", "Заявка", "Name " + name + " mail " + mail + "  tel " + tel);
@@ -31,27 +31,8 @@ public class MainRestController {
         mailService.send(name, mail, "Мы с вами свяжемся!", builder.toString());
 
 
-//        return "redirect:/";
+        return "redirect:/";
     }
 
-//    @RequestMapping(value = "/sendMail/{name}/{mail}")
-//    public void sendMail(@PathVariable("name") String name, @PathVariable("mail") String mail){
-////        ResponseEntity<String>
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    MailConfig.send(name, mail);
-//                } catch (EmailException e) {
-//                    e.printStackTrace();
-//
-//                }
-//            }
-//        }).start();
-//
-//
-////      return new ResponseEntity<String>("error", HttpStatus.INTERNAL_SERVER_ERROR);
-//
-////        return new ResponseEntity<String>("Ok", HttpStatus.OK);
-//    }
+
 }
