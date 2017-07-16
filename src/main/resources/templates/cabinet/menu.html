@@ -1,0 +1,106 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="menu (selected)">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#currency_bitcoin").val("test");
+            $.ajax({
+            url: 'https://api.blockchain.info/stats',
+            type: "GET",
+            dataType: "json"
+
+        }).done(function (data) {
+            $("#currency_bitcoin").val(data.market_price_usd);
+        });
+
+        });
+    </script>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><img src="/dist/image/logo.png" style="top-padding:0px" /></a>
+                <!--            <h2 style="color:white">Добро пожаловать <b th:text="${user.name}"></b></h2>-->
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" style="color:green"><output id="currency_bitcoin">BTC $2565.27 1.92%</output></a></li>
+                    <li><a href="#" style="color:red"><b>ETH $253.35 -1.51%</b></a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><b  th:text="${user.name}">Пользователь</b> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/cabinet/settings">Настройки</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/logout">Выйти</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Поиск...">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar" th:if="${user.typeClient} > 0">
+                <ul class="nav nav-sidebar">
+                    <li th:class="${selected}=='1'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-th-large"/>  Обзор</a></li>
+
+                    <li th:class="${selected}=='2'?'active':''" ><a href="/cabinet/ferms"><span class="glyphicon glyphicon-list-alt"/>  Фермы</a></li>
+                    <li th:class="${selected}=='3'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-camera"/>  Видеонаблюдение</a></li>
+                    <li th:class="${selected}=='4'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-list-alt"/>  Анализ доходности</a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li th:class="${selected}=='5'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-signal"/>  Ваш брокер</a></li>
+                    <li th:class="${selected}=='6'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-bookmark"/>  Анализ</a></li>
+                    <li th:class="${selected}=='7'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-bullhorn"/>  Новости</a></li>
+                    <li th:class="${selected}=='8'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-book"/>  Статьи</a></li>
+                    <li th:class="${selected}=='9'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-usd"/>  Выплаты</a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li th:class="${selected}=='10'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-leaf"/>  Бизнес-модель</a></li>
+                    <li th:class="${selected}=='11'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-globe"/>  Новости компании</a></li>
+                </ul>
+
+                <ul class="nav nav-sidebar" th:if="${user.typeClient} > 1">
+                    <li th:class="${selected}=='13'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-briefcase"/>  Для партнёров</a></li>
+                    <li th:class="${selected}=='14'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-folder-open"/>  Юридическая информация</a></li>
+                    <li th:class="${selected}=='15'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-send"/>  Инвестиции</a></li>
+                </ul>
+
+                <ul class="nav nav-sidebar" th:if="${user.typeClient} > 2">
+
+                    <li th:class="${selected}=='16'?'active':''" ><a href="/cabinet/ferms"><span class="glyphicon glyphicon-shopping-cart"/>  Покупка видеокарт</a></li>
+                    <li th:class="${selected}=='17'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-exclamation-sign"/>  Инвест предложения</a></li>
+                    <li th:class="${selected}=='18'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-compressed"/>  Доставка</a></li>
+
+                </ul>
+                <ul class="nav nav-sidebar" th:if="${user.typeClient} > 2">
+
+                    <li  th:class="${selected}=='19'?'active':''" ><a href="/admin/users"><span class="glyphicon glyphicon-wrench"/>  Админка</a></li>
+
+                </ul>
+            </div>
+
+            <div class="col-sm-3 col-md-2 sidebar" th:if="${user.typeClient} == 0">
+                <ul class="nav nav-sidebar">
+
+                    <li th:class="${selected}=='20'?'active':''" ><a href="/cabinet/ferms"><span class="glyphicon glyphicon-shopping-cart"/>  Покупка видеокарт</a></li>
+                    <li  th:class="${selected}=='21'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-exclamation-sign"/>  Инвест предложения</a></li>
+                    <li  th:class="${selected}=='22'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-compressed"/>  Доставка</a></li>
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

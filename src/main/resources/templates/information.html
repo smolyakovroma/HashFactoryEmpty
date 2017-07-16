@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
->
-
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>HashFactory</title>
     <link rel="shortcut icon" href="/assets/ico/favicon.ico"/>
@@ -15,237 +13,95 @@
 </head>
 
 <body>
-<div class="navbar-wrapper ">
-    <div class="container">
+<div th:insert="header :: top (hostactive='',shopactive='', aboutusactive='dropdown active')"></div>
 
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Хостинг</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/"><img src="dist/image/logo.png"/></a>
-                </div>
-                <div class="navbar-collapse collapse ">
-                    <ul class="nav navbar-nav ">
-                        <li ><a href="/">Хостинг</a></li>
-                        <li><a href="/shop">Магазин</a></li>
-                        <li class="dropdown active">
-                            <a class="dropdown-toggle" data-toggle="dropdown">О нас <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/information">Информация</a></li>
-                                <li><a href="/aboutus">Команда</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li style="padding-right:20px;padding-top:16px">
-                            <spin class="glyphicon glyphicon-earphone"></spin> 8 800 2000 600</li>
-                        <li style="padding-right:30px;padding-top:16px">
-                            <spin class="glyphicon glyphicon-envelope"></spin> info@hashfactory.ru</li>
-                        <li style="padding-right:5px;">
-                            <form th:action="@{/cabinet/dashboard}" name="cabinet" id="cabinet" method="GET" novalidate>
-                                <button type="submit" class="btn btn-warning navbar-btn"><span
-                                        class="glyphicon glyphicon-lock"> </span> <span
-                                        th:text="((${user.name} != null)? ${user.name} : 'Личный кабинет')"></span>
-                                    <!--<div th:text="((${user.name} != null)? ${user.name} : 'Личный кабинет')"></div>-->
-                                </button>
-                            </form>
-                        </li>
-                        <li th:if="${user.name} != null" style="padding-right:5px;"><a href="/logout"><b>Выйти</b></a>
-
-                        </li>
-                    </ul>
-                </div>
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <div class="alert alert-success">
+                <h2>У вас есть вопросы? Здесь мы собрали ответы на наиболее частые из них</h2>
             </div>
+
         </div>
-        <br/><br/>
 
-        <div class="row">
-            <div class="page-header">
-                <div class="alert alert-success">
-                    <h2>У вас есть вопросы? Здесь мы собрали ответы на наиболее частые из них</h2>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                            <b>Где вы покупаете оборудования для майнинга?</b>
+                        </a>
+                    </h4>
                 </div>
-
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>Основное оборудование видеокарты и айсики мы закупаем на прямую у производителей
+                            в Китае оптовыми партиями, с минимальной наценкой и гарантией завода
+                            изготовителя. Среднее время отгрузки и доставки в Россию 14-20 дней. Для заказа
+                            более крупных партий, этот срок может быть увеличин до 6-8 недель. </p>
+                    </div>
+                </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                            <b>Могу ли я забрать своё оборудование?</b>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>Да, конечно, оборудование является вашим имуществом. Мы лишь предоставляем услуги
+                            закупки, доставки и ответственного хранения. Но договором предусматривается, что
+                            в случаи передачи вам оборудования, вы уплачиваете разницу между нашей ценой
+                            закупки и средней розничной ценой. После 18 месяцев хранения, вы можете забрать
+                            своё оборудование без доплаты.
+                        </p>
 
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                <b>Где вы покупаете оборудования для майнинга?</b>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            <p>Основное оборудование видеокарты и айсики мы закупаем на прямую у производителей
-                                в Китае оптовыми партиями, с минимальной наценкой и гарантией завода
-                                изготовителя. Среднее время отгрузки и доставки в Россию 14-20 дней. Для заказа
-                                более крупных партий, этот срок может быть увеличин до 6-8 недель. </p>
-                        </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                                <b>Могу ли я забрать своё оборудование?</b>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse2" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <p>Да, конечно, оборудование является вашим имуществом. Мы лишь предоставляем услуги
-                                закупки, доставки и ответственного хранения. Но договором предусматривается, что
-                                в случаи передачи вам оборудования, вы уплачиваете разницу между нашей ценой
-                                закупки и средней розничной ценой. После 18 месяцев хранения, вы можете забрать
-                                своё оборудование без доплаты.
-                            </p>
-
-                        </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                            <b>Вы страхуете оборудование?</b>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>Да, такая возможность предусмотрена, хотя и не обязательно. Наши площадки для
+                            размещения ферм круглосуточно охраняется, реализована электро-инженерная и
+                            противопожарная безопасность. Также на всё оборудование в случаи выхода из
+                            строя, предусмотрена гарантия производителя.</p>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                                <b>Вы страхуете оборудование?</b>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse3" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <p>Да, такая возможность предусмотрена, хотя и не обязательно. Наши площадки для
-                                размещения ферм круглосуточно охраняется, реализована электро-инженерная и
-                                противопожарная безопасность. Также на всё оборудование в случаи выхода из
-                                строя, предусмотрена гарантия производителя.</p>
-                        </div>
-                    </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                            <b>Почему на вашем логотипе изображен биткоин и видеокарты? Ведь на GPU добывают
+                                альткоины</b>
+                        </a>
+                    </h4>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                                <b>Почему на вашем логотипе изображен биткоин и видеокарты? Ведь на GPU добывают альткоины</b>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse4" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <p>Да, мы значем что на GPU добываются альткоины,а биткоины на айсиках. Но никто вам не мешает конвертировать добытые альткоины в биткоин
-                                ,сейчас самую известную и дорогую криптовалюту. </p>
-                        </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>Да, мы значем что на GPU добываются альткоины,а биткоины на айсиках. Но никто вам не мешает
+                            конвертировать добытые альткоины в биткоин
+                            ,сейчас самую известную и дорогую криптовалюту. </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+
+
 <!--footer-->
-<footer class="footer1">
-    <div class="container">
-
-        <div class="row">
-            <!-- row -->
-            <div class="col-lg-3 col-md-3">
-                <!-- widgets column left -->
-                <ul class="list-unstyled clear-margins">
-                    <!-- widgets -->
-                    <li class="widget-container widget_nav_menu">
-                        <!-- widgets list -->
-                        <h1 class="title-widget">Информация</h1>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i> Майнинг</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- widgets column left end -->
-            <div class="col-lg-3 col-md-3">
-                <!-- widgets column left -->
-                <ul class="list-unstyled clear-margins">
-                    <!-- widgets -->
-                    <li class="widget-container widget_nav_menu">
-                        <!-- widgets list -->
-                        <h1 class="title-widget">Социальные сети</h1>
-                        <ul>
-                            <li><a href="https://twitter.com/hashfactory_ru"><i
-                                    class="fa fa-angle-double-right"></i> @hashfactory_ru</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- widgets column left end -->
-            <div class="col-lg-3 col-md-3">
-                <!-- widgets column left -->
-                <ul class="list-unstyled clear-margins">
-                    <!-- widgets -->
-                    <li class="widget-container widget_nav_menu">
-                        <!-- widgets list -->
-                        <h1 class="title-widget">Карта сайта</h1>
-                        <ul>
-                            <li><a href="/cabinet/dashboard"><i class="fa fa-angle-double-right"></i> Личный
-                                кабинет</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- widgets column left end -->
-            <div class="col-lg-3 col-md-3">
-                <!-- widgets column center -->
-                <ul class="list-unstyled clear-margins">
-                    <!-- widgets -->
-                    <li class="widget-container widget_recent_news">
-                        <!-- widgets list -->
-                        <h1 class="title-widget">Контакты</h1>
-                        <div class="footerp">
-                            <h2 class="title-median">ООО "ХэшЗавод"</h2>
-                            <p><b>Email:</b> <a href="mailto:info@hashfactory.ru">info@hashfactory.ru</a></p>
-                            <p><b>Телефон</b>
-                                <b style="color:#ffc106;">(с 9-00 до 21-00):</b> 8 800 2000 600 </p>
-
-                        </div>
-                        <div class="social-icons">
-                            <ul class="nomargin">
-                                <a href="https://www.facebook.com/bootsnipp"><i
-                                        class="fa fa-facebook-square fa-3x social-fb" id="social"></i></a>
-                                <a href="https://twitter.com/bootsnipp"><i
-                                        class="fa fa-twitter-square fa-3x social-tw" id="social"></i></a>
-                                <a href="https://plus.google.com/+Bootsnipp-page"><i
-                                        class="fa fa-google-plus-square fa-3x social-gp" id="social"></i></a>
-                                <a href="mailto:bootsnipp@gmail.com"><i
-                                        class="fa fa-envelope-square fa-3x social-em" id="social"></i></a>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-<!--header-->
-<div class="footer-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div class="copyright">
-                    © 2017, Промышленный майнинг в России
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div class="design">
-                    <a href="www.hashfactory.ru">www.hashfactory.ru</a> | <a target="_blank"
-                                                                             href="mailto:admin@hashfactory.ru">admin@hashfactory.ru</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<div th:insert="footer :: bottom"></div>
 </body>
 </html>

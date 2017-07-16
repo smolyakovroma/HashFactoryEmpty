@@ -10,7 +10,12 @@
     <link rel="shortcut icon" href="/assets/ico/favicon.ico">
 
     <title>HashFactory</title>
-
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/js/docs.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -18,7 +23,8 @@
     <link href="/dist/css/dashboard.css" rel="stylesheet">
     <link href="/dist/css/footer.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,92 +35,11 @@
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"><img src="/dist/image/logo.png" style="top-padding:0px" /></a>
-            <!--            <h2 style="color:white">Добро пожаловать <b th:text="${user.name}"></b></h2>-->
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" style="color:green"><b>BTC $2565.27 1.92%</b></a></li>
-                <li><a href="#" style="color:red"><b>ETH $253.35 -1.51%</b></a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown"><b  th:text="${user.name}">Пользователь</b> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/cabinet/settings">Настройки</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/logout">Выйти</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Поиск...">
-            </form>
-        </div>
-    </div>
-</div>
+
+<div th:insert="cabinet/menu :: menu (selected='1')"></div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar" th:if="${user.typeClient} > 0">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="/cabinet/dashboard">Обзор</a></li>
-
-                <li><a href="/cabinet/ferms">Фермы</a></li>
-                <li><a href="/cabinet/dashboard">Видеонаблюдение</a></li>
-                <li><a href="/cabinet/dashboard">Анализ доходности</a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="/cabinet/dashboard">Ваш брокер</a></li>
-                <li><a href="/cabinet/dashboard">Анализ рынка криптовалют</a></li>
-                <li><a href="/cabinet/dashboard">Новости</a></li>
-                <li><a href="/cabinet/dashboard">Статьи</a></li>
-                <li><a href="/cabinet/dashboard">Выплаты</a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="/cabinet/dashboard">Бизнес-модель</a></li>
-                <li><a href="/cabinet/dashboard">Новости компании</a></li>
-                <li><a href="/cabinet/dashboard">Обратная связь</a></li>
-            </ul>
-
-            <ul class="nav nav-sidebar" th:if="${user.typeClient} > 1">
-                <li><a href="/cabinet/dashboard">Для партнёров</a></li>
-                <li><a href="/cabinet/dashboard">Юридическая информация</a></li>
-                <li><a href="/cabinet/dashboard">Инвестиции</a></li>
-            </ul>
-
-            <ul class="nav nav-sidebar" th:if="${user.typeClient} > 2">
-
-                <li><a href="/cabinet/ferms">Покупка видеокарт</a></li>
-                <li><a href="/cabinet/dashboard">Инвест предложения</a></li>
-                <li><a href="/cabinet/dashboard">Доставка</a></li>
-
-            </ul>
-            <ul class="nav nav-sidebar" th:if="${user.typeClient} > 2">
-
-                <li><a href="/admin/users">Админка</a></li>
-
-            </ul>
-        </div>
-
-        <div class="col-sm-3 col-md-2 sidebar" th:if="${user.typeClient} == 0">
-            <ul class="nav nav-sidebar">
-
-                <li class="active"><a href="/cabinet/ferms">Покупка видеокарт</a></li>
-                <li><a href="/cabinet/dashboard">Инвест предложения</a></li>
-                <li><a href="/cabinet/dashboard">Доставка</a></li>
-            </ul>
-
-
-        </div>
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="row">
                 <div class="page-header">
@@ -126,32 +51,10 @@
         </div>
     </div>
 </div>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<div class="footer-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div class="copyright">
-                    © 2017, Промышленный майнинг в России
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <div class="design">
-                    <a href="www.hashfactory.ru">www.hashfactory.ru</a> | <a target="_blank" href="mailto:admin@hashfactory.ru">admin@hashfactory.ru</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="/dist/js/bootstrap.min.js"></script>
-<script src="/assets/js/docs.min.js"></script>
+<div th:insert="cabinet/menu-footer :: menu-footer"></div>
+
+
 </body>
 
 </html>

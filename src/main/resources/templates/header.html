@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="top (hostactive,shopactive, aboutusactive)">
+    <div class="navbar-wrapper ">
+        <div class="container">
+
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Хостинг</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/"><img src="dist/image/logo.png" style="top-padding:0px"/></a>
+                    </div>
+                    <div class="navbar-collapse collapse ">
+                        <ul class="nav navbar-nav ">
+                            <li th:class = "${hostactive}"><a href="/">Хостинг</a></li>
+                            <li th:class = "${shopactive}"><a href="/shop">Магазин</a></li>
+                            <li th:class = "${aboutusactive}">
+                                <!--dropdown-->
+                                <a class="dropdown-toggle" data-toggle="dropdown">О нас <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/information">Информация</a></li>
+                                    <li><a href="/aboutus">Команда</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li style="padding-right:20px;padding-top:16px">
+                                <spin class="glyphicon glyphicon-earphone"></spin> 8 800 2000 600</li>
+                            <li style="padding-right:30px;padding-top:16px">
+                                <spin class="glyphicon glyphicon-envelope"></spin> info@hashfactory.ru</li>
+                            <li style="padding-right:5px;">
+                                <form th:action="@{/cabinet/dashboard}" name="cabinet" id="cabinet" method="GET" novalidate>
+                                    <button type="submit" class="btn btn-warning navbar-btn"><span
+                                            class="glyphicon glyphicon-lock"> </span> <span
+                                            th:text="((${user.name} != null)? ${user.name} : 'Личный кабинет')"></span>
+                                        <!--<div th:text="((${user.name} != null)? ${user.name} : 'Личный кабинет')"></div>-->
+                                    </button>
+                                </form>
+                            </li>
+                            <li th:if="${user.name} != null" style="padding-right:5px;"><a href="/logout"><b>Выйти</b></a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
