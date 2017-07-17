@@ -11,7 +11,6 @@ import ru.hashfactory.empty.service.UserService;
 
 @Controller
 @RequestMapping
-@SessionAttributes("user")
 public class MainController {
 
     //TODO обнвление курс доллара
@@ -32,9 +31,8 @@ public class MainController {
     }
 
     @RequestMapping(value = {"/","/index"})
-    public ModelAndView main(@ModelAttribute User user) {
+    public ModelAndView main() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.getModel().put("user", user);
         modelAndView.setViewName("index");
         return modelAndView;
     }
