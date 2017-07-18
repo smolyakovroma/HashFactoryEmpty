@@ -71,8 +71,8 @@ public class AdminController {
     public String edit(@RequestParam int id, @RequestParam String name, @RequestParam String email, @RequestParam int active, @RequestParam int typeClient) {
         User user = userService.findUserById(id);
         if (user != null) {
-            user.setName(name);
-            user.setEmail(email);
+            user.setName(name.trim());
+            user.setEmail(email.trim());
             user.setTypeClient(typeClient);
             user.setActive(active);
             userService.saveUser(user);
@@ -85,10 +85,10 @@ public class AdminController {
     public String newUserPost(@RequestParam String name, @RequestParam String email, @RequestParam int typeClient) {
         if (userService.findUserByEmail(email.trim()) == null) {
             User user = new User();
-            user.setName(name);
-            user.setEmail(email);
+            user.setName(name.trim());
+            user.setEmail(email.trim());
             user.setTypeClient(typeClient);
-            user.setPassword(user.getEmail());
+            user.setPassword(user.getEmail().trim());
             user.setActive(0);
             userService.saveNewUser(user);
             StringBuilder builder = new StringBuilder();
@@ -99,7 +99,8 @@ public class AdminController {
             builder.append("<h3>для подтверждения регистрации пройдите по ссылки и установите пароль к личному кабинету</h3><br/>");
             builder.append("<h3><a href='www.hashfactory.ru/registration?email=" + email.trim() + "'>Перейти</a></h3><br/><br/></td>");
             builder.append("<td align=center>team3</td></tr>");
-            builder.append("<tr><td></td><td align=right><p>Служба поддежки <a href='mailto:admin@hashactory.ru'>admin@hashactory.ru</a></p><br/></td></tr></table>");
+            builder.append("<tr><td></td><td align=right><p>Служба поддежки <a href='mailto:admin@hashactory.ru'>admin@hashactory.ru</a></p>");
+            builder.append("<p>Телефон 8 800 100 5979 (по России бесплатно)</p></td></tr></table>");
 
             mailService.send(name, email, "Регистрация в личном кабинете www.hashfactory.ru", builder.toString());
         }

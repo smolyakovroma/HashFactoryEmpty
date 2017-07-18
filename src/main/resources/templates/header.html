@@ -18,20 +18,25 @@
                     <div class="navbar-collapse collapse ">
                         <ul class="nav navbar-nav ">
                             <li th:class = "${hostactive}"><a href="/">Хостинг</a></li>
-                            <li th:class = "${shopactive}"><a href="/shop">Магазин</a></li>
+                            <!--<li th:class = "${shopactive}"><a href="/shop">Магазин</a></li>-->
                             <li th:class = "${aboutusactive}">
                                 <!--dropdown-->
-                                <a class="dropdown-toggle" data-toggle="dropdown">О нас <b class="caret"></b></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown">Информация <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/information">Информация</a></li>
-                                    <li><a href="/aboutus">Команда</a></li>
+                                    <li><a href="/information">Вопросы и ответы</a></li>
+                                    <li><a href="/contacts">Контакты</a></li>
+                                    <li><a href="/aboutus">О нас</a></li>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
+                            <!--<li style="padding-right:20px;padding-top:16px"  data-toggle="tooltip" data-placement="left" title="whatsapp, viber, telegram">-->
+                                <!--<i class="fa fa-whatsapp" aria-hidden="true"></i> <i class="fa fa-viber"></i> <i class="fa fa-telegram" aria-hidden="true"></i> 8 926 694 2468</li>-->
+                            <li style="padding-right:15px;padding-top:16px"  data-toggle="tooltip" data-placement="left" title="Басплатно по России">
+                                <i class="fa fa-viber"></i> 8 800 100 5979</li>
+                            <li style="padding-right:15px;padding-top:16px"  data-toggle="tooltip" data-placement="left" title="whatsapp, viber, telegram">
+                            </i> <i class="fa fa-telegram" aria-hidden="true"></i> 8 926 694 2468</li>
                             <li style="padding-right:20px;padding-top:16px">
-                                <spin class="glyphicon glyphicon-earphone"></spin> 8 800 2000 600</li>
-                            <li style="padding-right:30px;padding-top:16px">
                                 <spin class="glyphicon glyphicon-envelope"></spin> info@hashfactory.ru</li>
                             <li style="padding-right:5px;">
                                 <form th:action="@{/cabinet/dashboard}" name="cabinet" id="cabinet" method="GET" novalidate>

@@ -72,6 +72,10 @@ public class MainController {
         return "aboutus";
     }
 
+    @RequestMapping(value = "/contacts")
+    public String contacts() {
+        return "contacts";
+    }
 
     @RequestMapping(value = "/shop")
     public String shop() {
@@ -102,7 +106,8 @@ public class MainController {
         builder.append("<tr><td align=center ><br/><h2>Приветствуем!</h2>");
         builder.append("<h3>В ближайшее время мы с вами свяжемся!</h3><br/></td>");
         builder.append("<td align=center>team2</td></tr>");
-        builder.append("<tr><td></td><td align=right><p>Служба поддежки <a href='mailto:admin@hashactory.ru'>admin@hashactory.ru</a></p><br/></td></tr></table>");
+        builder.append("<tr><td></td><td align=right><p>Служба поддежки <a href='mailto:admin@hashactory.ru'>admin@hashactory.ru</a></p>");
+        builder.append("<p>Телефон 8 800 100 5979 (по России бесплатно)</p></td></tr></table>");
 
         mailService.send(name, mail, "Мы с вами свяжемся!", builder.toString());
 
@@ -181,7 +186,8 @@ public class MainController {
             builder.append("<h3>Для продолжения процедуры <a href='www.hashfactory.ru/registration?email=" + email.trim() + "&recovery=true'>Перейти</a></h3><br/>");
             builder.append("<h3>Если вы этого неделали, проигнорируйте письмо</h3><br/></td>");
             builder.append("<td align=center>team4</td></tr>");
-            builder.append("<tr><td></td><td align=right><p>Служба поддежки <a href='mailto:admin@hashactory.ru'>admin@hashactory.ru</a></p><br/></td></tr></table>");
+            builder.append("<tr><td></td><td align=right><p>Служба поддежки <a href='mailto:admin@hashactory.ru'>admin@hashactory.ru</a></p>");
+            builder.append("<p>Телефон 8 800 100 5979 (по России бесплатно)</p></td></tr></table>");
 
             mailService.send(null, user.getEmail(), "Запрос на восстановление пароля", builder.toString());
 
