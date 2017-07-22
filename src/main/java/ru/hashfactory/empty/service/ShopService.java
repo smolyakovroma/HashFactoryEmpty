@@ -10,9 +10,10 @@ public interface ShopService {
 
     List<Item> getAllAsics();
     List<Item> getAllFerms();
-    List<Item> getAllGPU();
+    List<Item> getAllGPUS();
     List<Item> getAllPSUS();
     List<Item> getAllOthers();
+    Item save(Item item);
     List<Item> findAll(TypeItem typeItem);
     Item findById(int id);
 }

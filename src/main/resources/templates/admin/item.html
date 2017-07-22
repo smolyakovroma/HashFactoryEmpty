@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico"/>
+    <title>HashFactory</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/dist/js/bootstrap.min.js"></script>
+    <script src="/dist/js/bootstrap-toggle.js"></script>
+    <script src="/assets/js/docs.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/dist/css/bootstrap-toggle.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="admin/admin-header :: menu"></div>
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-4 col-sm-4">
+            <div class="alert alert-info">
+                <div class="text-center">
+                    <img th:src="@{'/image/'+${item.id}+'/0'}" th:alt="${item.id}" width="340" height="300">&nbsp;<br/>
+                    <form method="POST" enctype="multipart/form-data" action="/admin/upload/0">
+                        <input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>
+                        <input type="file" name="file" class="btn btn-mini  btn-primary"
+                               style="display:inline; padding: 2px 1px;"/>
+                        <input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"
+                               value="&#128190;"/><br/><br/>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-sm-8">
+            <form method="post" name="edit_form" modelid="comment_form" action="/admin/item" role="form">
+                <div class="alert alert-info">
+                    <div class="form-group">
+                        <input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>
+                        <label for="name">Наименование</label>
+                        <input class="form-control" type="text" id="name" name="name" th:value="${item.name}" required/>
+                        <br/>
+                        <label for="typeItem">Раздел товара</label>
+                        <select id="typeItem" name="typeItem" class="form-control">
+                            <option>ASIC</option>
+                            <option>FERM</option>
+                            <option>GPU</option>
+                            <option>PSU</option>
+                            <option>OTHER</option>
+                        </select><br/>
+                        <label for="description">Описание товара</label>
+                        <textarea class="form-control" cols="40" rows="5" type="text" id="description"
+                                  name="description"
+                                  required th:inline="text">[[${item.description}]]</textarea>
+
+                        <label for="active">Активен</label>
+                        <input class="form-control" type="number" id="active" name="active" th:value="${item.active}"
+                               required/>
+                        <label for="prioritet">Приоритет товара (0 - самый низкий)</label>
+                        <input class="form-control" type="number" id="prioritet" name="prioritet" maxlength="5"
+                               th:value="${item.prioritet}"
+                               required/>
+                        <label for="producer">Производитель</label>
+                        <input class="form-control" type="text" id="producer" name="producer"
+                               th:value="${item.producer}"
+                               required/>
+                        <label for="speed">Скорость (Например 13.5 Th/s, 24Mh)</label>
+                        <input class="form-control" type="text" id="speed" name="speed" th:value="${item.speed}"
+                               required/>
+                        <label for="intake">Потребление (Ватт-час)</label>
+                        <input class="form-control" type="text" id="intake" name="intake" th:value="${item.intake}"
+                               required/>
+                        <label for="algoritm">Алгоритм (Например SHA-256, X11, Any)</label>
+                        <input class="form-control" type="text" id="algoritm" name="algoritm"
+                               th:value="${item.algoritm}"
+                               required/>
+                        <br/>
+
+                        <label for="price">Цена</label>
+                        <input class="form-control" type="number" id="price" name="price" th:value="${item.price}"
+                               required/>
+                        <label for="amount">Количество</label>
+                        <input class="form-control" type="number" id="amount" name="amount" th:value="${item.amount}"
+                               required/>
+                        <label for="reserve">Резерв (кол-ве ниже которого товар заканчивается на скkаде, резерв 0 -
+                            товар
+                            только под заказ)</label>
+                        <input class="form-control" type="number" id="reserve" name="reserve" th:value="${item.reserve}"
+                               required/>
+                        <br/>
+
+                    </div>
+
+                    <button type="submit" id="submit" class="btn btn-primary pull-right">Сохранить</button>
+                    <br/> <br/>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <div class="row">
+
+
+        <div class="col-md-6 col-sm-6">
+            <div class="alert alert-info">
+                <div class="text-center">
+                    <img th:src="@{'/image/'+${item.id}+'/1'}" th:alt="${item.id}" width="340" height="300"><br/>
+                    <form method="POST" enctype="multipart/form-data" action="/admin/upload/1">
+                        <input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>
+                        <input type="file" name="file" class="btn btn-mini  btn-primary"
+                               style="display:inline; padding: 2px 1px;"/>
+                        <input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"
+                               value="&#128190;"/><br/><br/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="alert alert-info">
+                <div class="text-center">
+                    <img th:src="@{'/image/'+${item.id}+'/2'}" th:alt="${item.id}" width="340" height="300"><br/>
+                    <form method="POST" enctype="multipart/form-data" action="/admin/upload/2">
+                        <input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>
+                        <input type="file" name="file" class="btn btn-mini  btn-primary"
+                               style="display:inline; padding: 2px 1px;"/>
+                        <input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"
+                               value="&#128190;"/><br/><br/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+
+        <div class="col-md-6 col-sm-6">
+            <div class="alert alert-info">
+                <div class="text-center">
+                    <img th:src="@{'/image/'+${item.id}+'/3'}" th:alt="${item.id}" width="340" height="300"><br/>
+                    <form method="POST" enctype="multipart/form-data" action="/admin/upload/3">
+                        <input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>
+                        <input type="file" name="file" class="btn btn-mini  btn-primary"
+                               style="display:inline; padding: 2px 1px;"/>
+                        <input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"
+                               value="&#128190;"/><br/><br/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="alert alert-info">
+                <div class="text-center">
+                    <img th:src="@{'/image/'+${item.id}+'/4'}" th:alt="${item.id}" width="340" height="300"><br/>
+                    <form method="POST" enctype="multipart/form-data" action="/admin/upload/4">
+                        <input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>
+                        <input type="file" name="file" class="btn btn-mini  btn-primary"
+                               style="display:inline; padding: 2px 1px;"/>
+                        <input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"
+                               value="&#128190;"/><br/><br/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="/dist/js/jquery.min.js"></script>
+
+<s
+</body>
+</html>

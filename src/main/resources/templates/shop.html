@@ -56,7 +56,7 @@
                     <span th:if="${(asic.amount <= asic.reserve) && (asic.reserve!=0) && (asic.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
                     <span th:if="${(asic.amount == 0) && (asic.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
                     &nbsp;</h3>
-                <div class="text-center"><img  th:src="@{'/image/'+${asic.id}}" th:alt="${asic.id}" width="340" height="300"></div>
+                <div class="text-center"><img  th:src="@{'/image/'+${asic.id}+'/0'}" th:alt="${asic.id}" width="340" height="300"></div>
                 <div class="caption text-center">
                     <h3><b th:text="${asic.name}">Antminer S9</b></h3>
                     <p><b>Цена</b>  <div th:text="${asic.price}"/> рублей</p>
@@ -89,7 +89,7 @@
                     <span th:if="${(ferm.amount <= ferm.reserve) && (ferm.reserve!=0) && (ferm.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
                     <span th:if="${(ferm.amount == 0) && (ferm.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
                     &nbsp;</h3>
-                <div class="text-center"><img  th:src="@{'/image/'+${ferm.id}}" th:alt="${ferm.id}" width="340" height="300"></div>
+                <div class="text-center"><img  th:src="@{'/image/'+${ferm.id}+'/0'}" th:alt="${ferm.id}" width="340" height="300"></div>
                 <div class="caption text-center">
                     <h3><b th:text="${ferm.name}">Antminer S9</b></h3>
                     <p><b>Цена</b>  <div th:text="${ferm.price}"/> рублей</p>
@@ -120,7 +120,7 @@
                     <span th:if="${(gpu.amount <= gpu.reserve) && (gpu.reserve!=0) && (gpu.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
                     <span th:if="${(gpu.amount == 0) && (gpu.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
                     &nbsp;</h3>
-                <div class="text-center"><img  th:src="@{'/image/'+${gpu.id}}" th:alt="${gpu.id}" width="340" height="300"></div>
+                <div class="text-center"><img  th:src="@{'/image/'+${gpu.id}+'/0'}" th:alt="${gpu.id}" width="340" height="300"></div>
                 <div class="caption text-center">
                     <h3><b th:text="${gpu.name}">Antminer S9</b></h3>
                     <p><b>Цена</b>  <div th:text="${gpu.price}"/> рублей</p>
@@ -150,7 +150,7 @@
                     <span th:if="${(psu.amount <= psu.reserve) && (psu.reserve!=0) && (psu.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
                     <span th:if="${(psu.amount == 0) && (psu.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
                     &nbsp;</h3>
-                <div class="text-center"><img  th:src="@{'/image/'+${psu.id}}" th:alt="${psu.id}" width="340" height="300"></div>
+                <div class="text-center"><img  th:src="@{'/image/'+${psu.id}+'/0'}" th:alt="${psu.id}" width="340" height="300"></div>
                 <div class="caption text-center">
                     <h3><b th:text="${psu.name}">Antminer S9</b></h3>
                     <p><b>Цена</b>  <div th:text="${psu.price}"/> рублей</p>
@@ -180,7 +180,7 @@
                     <span th:if="${(other.amount <= other.reserve) && (other.reserve!=0) && (other.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
                     <span th:if="${(other.amount == 0) && (other.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
                     &nbsp;</h3>
-                <div class="text-center"><img  th:src="@{'/image/'+${other.id}}" th:alt="${other.id}" width="340" height="300"></div>
+                <div class="text-center"><img  th:src="@{'/image/'+${other.id}+'/0'}" th:alt="${other.id}" width="340" height="300"></div>
                 <div class="caption text-center">
                     <h3><b th:text="${other.name}">Antminer S9</b></h3>
                     <p><b>Цена</b>  <div th:text="${other.price}"/> рублей</p>
@@ -208,7 +208,7 @@
             <div class="col-md-4 col-sm-12">
                 <div class="thumbnail text-center">
 
-                    <img th:src="@{'/image/1'}" th:alt="1" width="340" height="300" onclick="zoom();"><br/>
+                    <img th:src="@{'/image/1/0'}" th:alt="1" width="340" height="300" onclick="zoom();"><br/>
                     <ul class="pagination ">
                         <li class="active"><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
@@ -241,7 +241,7 @@
 
             <div class="thumbnail text-center">
                 <div class="btn btn-danger pull-right" onclick="show(1);"><span class="glyphicon glyphicon-remove"></span> Закрыть</div>
-                <img th:src="@{'/image/1'}" th:alt="1" width="700" height="800"><br/>
+                <img th:src="@{'/image/1/0'}" th:alt="1" width="700" height="800"><br/>
                 <ul class="pagination ">
                     <li class="active"><a href="#">1</a></li>
                     <li><a href="#">2</a></li>

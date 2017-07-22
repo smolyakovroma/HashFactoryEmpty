@@ -29,7 +29,7 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
 
-    public List<Item> getAllGPU() {
+    public List<Item> getAllGPUS() {
         return itemsRepository.getAllByTypeItem(TypeItem.GPU);
     }
 
@@ -41,6 +41,11 @@ public class ShopServiceImpl implements ShopService {
     @Override
     public List<Item> getAllOthers() {
         return itemsRepository.getAllByTypeItem(TypeItem.OTHER);
+    }
+
+    @Override
+    public Item save(Item item) {
+       return itemsRepository.save(item);
     }
 
     @Override

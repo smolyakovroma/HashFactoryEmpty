@@ -6,14 +6,16 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import ru.hashfactory.empty.domain.Item;
 import ru.hashfactory.empty.domain.User;
 import ru.hashfactory.empty.service.MailService;
+import ru.hashfactory.empty.service.ShopService;
 import ru.hashfactory.empty.service.UserService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -24,6 +26,8 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private MailService mailService;
+    @Autowired
+    private ShopService shopService;
 
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -106,4 +110,167 @@ public class AdminController {
         }
         return "redirect:/admin/users";
     }
+
+
+    @RequestMapping(value = "/asics", method = RequestMethod.GET)
+    public ModelAndView asics() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/asics");
+        List<Item> asics = shopService.getAllAsics();
+
+        modelAndView.addObject("asics", asics);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/gpus", method = RequestMethod.GET)
+    public ModelAndView gpus() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/gpus");
+        List<Item> gpus = shopService.getAllGPUS();
+
+        modelAndView.addObject("gpus", gpus);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/ferms", method = RequestMethod.GET)
+    public ModelAndView ferms() {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/ferms");
+
+        List<Item> ferms = shopService.getAllFerms();
+
+        modelAndView.addObject("ferms", ferms);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/psus", method = RequestMethod.GET)
+    public ModelAndView psus() {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/psus");
+
+        List<Item> psus = shopService.getAllPSUS();
+
+        modelAndView.addObject("psus", psus);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/others", method = RequestMethod.GET)
+    public ModelAndView others() {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/others");
+
+        List<Item> others = shopService.getAllOthers();
+
+        modelAndView.addObject("others", others);
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/newitem", method = RequestMethod.GET)
+    public ModelAndView newItem() {
+        ModelAndView modelAndView = new ModelAndView();
+        Item item = new Item();
+        item = shopService.save(item);
+
+        if (item != null) {
+            modelAndView.getModel().put("item", item);
+            modelAndView.setViewName("admin/item");
+            return modelAndView;
+        }
+        modelAndView.setViewName("admin/users");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/item/{id}", method = RequestMethod.GET)
+    public ModelAndView item(@PathVariable int id) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        Item item = shopService.findById(id);
+        if (item != null) {
+            modelAndView.getModel().put("item", item);
+            modelAndView.setViewName("admin/item");
+            return modelAndView;
+        }
+        modelAndView.setViewName("admin/users");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/item", method = RequestMethod.POST)
+    public String itemSave(@ModelAttribute Item item) {
+
+        if (item == null) {
+
+            return "redirect:/admin/users";
+        }
+
+        item = shopService.save(item);
+//        Item item= shopService.findById(id);
+//        if (item != null) {
+//            modelAndView.getModel().put("item", item);
+//            modelAndView.setViewName("admin/item");
+//            return modelAndView;
+//        }
+        return "redirect:/admin/item/"+item.getId();
+
+//        if (item.getTypeItem() != null)
+//            switch (item.getTypeItem()) {
+//                case ASIC:
+//                    return "redirect:/admin/asics";
+//                case FERM:
+//                    return "redirect:/admin/ferms";
+//                case GPU:
+//                    return "redirect:/admin/gpus";
+//                case PSU:
+//                    return "redirect:/admin/psus";
+//                case OTHER:
+//                    return "redirect:/admin/others";
+//
+//            }
+//
+//        return "redirect:/admin/users";
+    }
+
+    @RequestMapping(value="/upload/{number}", method=RequestMethod.POST)
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("id") int id, @PathVariable int number){
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                Item item = shopService.findById(id);
+                switch (number){
+                    case 0:
+                        item.setPic(bytes);
+                        break;
+                    case 1:
+                        item.setPic1(bytes);
+                        break;
+                    case 2:
+                        item.setPic2(bytes);
+                        break;
+                    case 3:
+                        item.setPic3(bytes);
+                        break;
+                    case 4:
+                        item.setPic4(bytes);
+                        break;
+                    default:
+                        return "redirect:/admin/item/"+id;
+                }
+
+                shopService.save(item);
+
+            } catch (Exception e) {
+                return "redirect:/admin/item/"+id;
+            }
+        } else {
+            return "redirect:/admin/item/"+id;
+        }
+        return "redirect:/admin/item/"+id;
+    }
+
 }

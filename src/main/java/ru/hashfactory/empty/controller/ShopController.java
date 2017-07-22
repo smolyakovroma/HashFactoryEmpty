@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ru.hashfactory.empty.domain.Item;
-import ru.hashfactory.empty.domain.TypeItem;
 import ru.hashfactory.empty.service.ShopService;
 
 import java.io.IOException;
@@ -29,7 +28,7 @@ public class ShopController {
         modelAndView.setViewName("shop");
         List<Item> asics = shopService.getAllAsics();
         List<Item> ferms = shopService.getAllFerms();
-        List<Item> gpus = shopService.getAllGPU();
+        List<Item> gpus = shopService.getAllGPUS();
         List<Item> psus = shopService.getAllPSUS();
         List<Item> others = shopService.getAllOthers();
 
@@ -41,10 +40,30 @@ public class ShopController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/image/{image_id}", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<byte[]> getImage(@PathVariable("image_id") int imageId) throws IOException {
+    @RequestMapping(value = "/image/{image_id}/{number}", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<byte[]> getImage(@PathVariable("image_id") int imageId, @PathVariable("number") int number) throws IOException {
+        byte[] imageContent = null;
+        switch (number) {
+            case 0:
+                imageContent = shopService.findById(imageId).getPic();
+                break;
+            case 1:
+                imageContent = shopService.findById(imageId).getPic1();
+                break;
+            case 2:
+                imageContent = shopService.findById(imageId).getPic2();
+                break;
+            case 3:
+                imageContent = shopService.findById(imageId).getPic3();
+                break;
+            case 4:
+                imageContent = shopService.findById(imageId).getPic4();
+                break;
+            default:
+                imageContent = shopService.findById(imageId).getPic();
+                break;
+        }
 
-        byte[] imageContent = shopService.findById(imageId).getPic();
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
         return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);

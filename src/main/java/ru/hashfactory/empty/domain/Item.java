@@ -24,8 +24,18 @@ public class Item {
     private String algoritm;
     private String speed;
     private int intake;
+    private int prioritet;
+    private int active;
     @Lob
     private byte[] pic;
+    @Lob
+    private byte[] pic1;
+    @Lob
+    private byte[] pic2;
+    @Lob
+    private byte[] pic3;
+    @Lob
+    private byte[] pic4;
     @Enumerated(EnumType.STRING)
     private TypeItem typeItem;
 }
