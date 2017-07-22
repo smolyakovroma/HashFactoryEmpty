@@ -39,6 +39,15 @@
     <br/>
     <div class="row" id="tab1">
 
+        <div th:if="${(asics==null) || (asics.isEmpty())}" class="col-md-12 col-sm-12">
+            <div class="page-header">
+                <div class="alert alert-info">
+                    <h2>Товар в данной категории отсутствует!</h2>
+                </div>
+
+            </div>
+        </div>
+
         <div class="col-md-4 col-sm-6" th:each="asic : ${asics}" >
             <div class="thumbnail">
                 <h3 class=" text-right">
@@ -63,10 +72,46 @@
     </div>
 
     <div class="row" id="tab2">
-        <h1>FERMS</h1>
+
+        <div th:if="${(ferms==null) || (ferms.isEmpty())}" class="col-md-12 col-sm-12">
+            <div class="page-header">
+                <div class="alert alert-info">
+                    <h2>Товар в данной категории отсутствует!</h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6" th:each="ferm : ${ferms}" >
+            <div class="thumbnail">
+                <h3 class=" text-right">
+                    <span th:if="${(ferm.amount > ferm.reserve) && (ferm.reserve!=0)}" class="label label-success" >&nbsp;На складе&nbsp;</span>
+                    <span th:if="${ferm.reserve == 0}" class="label label-info">&nbsp;Под заказ&nbsp;</span>
+                    <span th:if="${(ferm.amount <= ferm.reserve) && (ferm.reserve!=0) && (ferm.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
+                    <span th:if="${(ferm.amount == 0) && (ferm.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
+                    &nbsp;</h3>
+                <div class="text-center"><img  th:src="@{'/image/'+${ferm.id}}" th:alt="${ferm.id}" width="340" height="300"></div>
+                <div class="caption text-center">
+                    <h3><b th:text="${ferm.name}">Antminer S9</b></h3>
+                    <p><b>Цена</b>  <div th:text="${ferm.price}"/> рублей</p>
+                    <br/>
+                    <p>
+                    <div onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row" id="tab3">
+
+        <div th:if="${(gpus==null) || (gpus.isEmpty())}" class="col-md-12 col-sm-12">
+            <div class="page-header">
+                <div class="alert alert-info">
+                    <h2>Товар в данной категории отсутствует!</h2>
+                </div>
+            </div>
+        </div>
         <div class="col-md-4 col-sm-6" th:each="gpu : ${gpus}" >
             <div class="thumbnail">
                 <h3 class=" text-right">
@@ -89,13 +134,72 @@
         </div>
     </div>
     <div class="row" id="tab4">
-        <h1>PSU</h1>
+        <div th:if="${(psus==null) || (psus.isEmpty())}" class="col-md-12 col-sm-12">
+            <div class="page-header">
+                <div class="alert alert-info">
+                    <h2>Товар в данной категории отсутствует!</h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6" th:each="psu : ${psus}" >
+            <div class="thumbnail">
+                <h3 class=" text-right">
+                    <span th:if="${(psu.amount > psu.reserve) && (psu.reserve!=0)}" class="label label-success" >&nbsp;На складе&nbsp;</span>
+                    <span th:if="${psu.reserve == 0}" class="label label-info">&nbsp;Под заказ&nbsp;</span>
+                    <span th:if="${(psu.amount <= psu.reserve) && (psu.reserve!=0) && (psu.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
+                    <span th:if="${(psu.amount == 0) && (psu.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
+                    &nbsp;</h3>
+                <div class="text-center"><img  th:src="@{'/image/'+${psu.id}}" th:alt="${psu.id}" width="340" height="300"></div>
+                <div class="caption text-center">
+                    <h3><b th:text="${psu.name}">Antminer S9</b></h3>
+                    <p><b>Цена</b>  <div th:text="${psu.price}"/> рублей</p>
+                    <br/>
+                    <p>
+                    <div onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row" id="tab5">
-        <h1>OTHERS</h1>
+        <div th:if="${(others==null) || (others.isEmpty())}" class="col-md-12 col-sm-12">
+            <div class="page-header">
+                <div class="alert alert-info">
+                    <h2>Товар в данной категории отсутствует!</h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6" th:each="other : ${others}" >
+            <div class="thumbnail">
+                <h3 class=" text-right">
+                    <span th:if="${(other.amount > psu.reserve) && (other.reserve!=0)}" class="label label-success" >&nbsp;На складе&nbsp;</span>
+                    <span th:if="${other.reserve == 0}" class="label label-info">&nbsp;Под заказ&nbsp;</span>
+                    <span th:if="${(other.amount <= other.reserve) && (other.reserve!=0) && (other.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
+                    <span th:if="${(other.amount == 0) && (other.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
+                    &nbsp;</h3>
+                <div class="text-center"><img  th:src="@{'/image/'+${other.id}}" th:alt="${other.id}" width="340" height="300"></div>
+                <div class="caption text-center">
+                    <h3><b th:text="${other.name}">Antminer S9</b></h3>
+                    <p><b>Цена</b>  <div th:text="${other.price}"/> рублей</p>
+                    <br/>
+                    <p>
+                    <div onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row" id="tab6">
-        <h1>BUY</h1>
+        <div class="page-header">
+            <div class="alert alert-info">
+                <h2>Корзина пуста!</h2>
+            </div>
+
+        </div>
     </div>
 
     <div class="row" id="info">

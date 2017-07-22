@@ -9,7 +9,10 @@ import java.util.List;
 public interface ShopService {
 
     List<Item> getAllAsics();
+    List<Item> getAllFerms();
     List<Item> getAllGPU();
+    List<Item> getAllPSUS();
+    List<Item> getAllOthers();
     List<Item> findAll(TypeItem typeItem);
     Item findById(int id);
 }

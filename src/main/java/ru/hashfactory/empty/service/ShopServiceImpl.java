@@ -23,9 +23,24 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
+    public List<Item> getAllFerms() {
+        return itemsRepository.getAllByTypeItem(TypeItem.FERM);
+    }
+
+    @Override
 
     public List<Item> getAllGPU() {
         return itemsRepository.getAllByTypeItem(TypeItem.GPU);
+    }
+
+    @Override
+    public List<Item> getAllPSUS() {
+        return itemsRepository.getAllByTypeItem(TypeItem.PSU);
+    }
+
+    @Override
+    public List<Item> getAllOthers() {
+        return itemsRepository.getAllByTypeItem(TypeItem.OTHER);
     }
 
     @Override

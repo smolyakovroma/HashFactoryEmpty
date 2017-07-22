@@ -28,9 +28,16 @@ public class ShopController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("shop");
         List<Item> asics = shopService.getAllAsics();
+        List<Item> ferms = shopService.getAllFerms();
         List<Item> gpus = shopService.getAllGPU();
+        List<Item> psus = shopService.getAllPSUS();
+        List<Item> others = shopService.getAllOthers();
+
         modelAndView.addObject("asics", asics);
+        modelAndView.addObject("ferms", ferms);
         modelAndView.addObject("gpus", gpus);
+        modelAndView.addObject("psus", ferms);
+        modelAndView.addObject("others", gpus);
         return modelAndView;
     }
 
