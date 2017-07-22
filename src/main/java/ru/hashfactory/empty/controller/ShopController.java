@@ -37,7 +37,7 @@ public class ShopController {
         modelAndView.addObject("ferms", ferms);
         modelAndView.addObject("gpus", gpus);
         modelAndView.addObject("psus", ferms);
-        modelAndView.addObject("others", gpus);
+        modelAndView.addObject("others", others);
         return modelAndView;
     }
 
