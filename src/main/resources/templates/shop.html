@@ -24,19 +24,20 @@
     <div class="row">
         <div class="container">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#">ASIC майнеры</a></li>
-                <li><a href="#">GPU майнеры</a></li>
-                <li><a href="#">Блоки питания</a></li>
-                <li><a href="#">Комплектующие</a></li>
-                <li class="pull-right"><a href="#"><span
-                        class="glyphicon glyphicon-shopping-cart"></span> Корзина</a></li>
+                <li class="active" id="tab1" onclick="click_tab('#tab1')"><a href="#">ASIC майнеры</a></li>
+                <li id="tab2" onclick="click_tab('#tab2')"><a href="#">GPU майнеры</a></li>
+                <li id="tab3" onclick="click_tab('#tab3')"><a href="#">Видеокарты</a></li>
+                <li id="tab4" onclick="click_tab('#tab4')"><a href="#">Блоки питания</a></li>
+                <li id="tab5" onclick="click_tab('#tab5')"><a href="#">Комплектующие</a></li>
+                <li id="tab6" class="pull-right" onclick="click_tab('#tab6')"><a href="#"><span
+                        class="glyphicon glyphicon-shopping-cart"></span> Корзина <span id="buy" class="badge">0</span></a></li>
                 <!--                      <li><a href="#">Корзина <span class="badge">3</span></a></li>-->
             </ul>
         </div>
 
     </div>
     <br/>
-    <div class="row">
+    <div class="row" id="tab1">
 
         <div class="col-md-4 col-sm-6" th:each="asic : ${asics}" >
             <div class="thumbnail">
@@ -51,36 +52,103 @@
                     <h3><b th:text="${asic.name}">Antminer S9</b></h3>
                     <p><b>Цена</b>  <div th:text="${asic.price}"/> рублей</p>
                     <br/>
-                    <p><a href="" class="btn btn-primary" data-toggle="modal" data-target="#infoModal" role="button"><span
-                            class="glyphicon glyphicon-search"></span> Подробней</a> <a href="#" class="btn btn-success"
-                                                                                        role="button"><span
-                            class="glyphicon glyphicon-shopping-cart"></span> В корзину</a></p>
+                    <p>
+                    <div onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                    </p>
                 </div>
             </div>
         </div>
 
-
-
     </div>
-</div>
 
-<!--modal window-->
-<div id="infoModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title text-center">Всё получилось =)</h2><br/>
+    <div class="row" id="tab2">
+        <h1>FERMS</h1>
+    </div>
+
+    <div class="row" id="tab3">
+        <h1>GPU</h1>
+    </div>
+    <div class="row" id="tab4">
+        <h1>PSU</h1>
+    </div>
+    <div class="row" id="tab5">
+        <h1>OTHERS</h1>
+    </div>
+    <div class="row" id="tab6">
+        <h1>BUY</h1>
+    </div>
+
+    <div class="row" id="info">
+        <div class="col-md-12 col-sm-12">
+
+            <div class="col-md-4 col-sm-12">
+                <div class="thumbnail text-center">
+
+                    <img th:src="@{'/image/1'}" th:alt="1" width="340" height="300" onclick="zoom();"><br/>
+                    <ul class="pagination ">
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="col-md-4 col-sm-4"><p>kq;jwekqjw;ekq;wekqjwe;qkjwe;lqjwelkqjwe</p></div>
-                <div class="col-md-8 col-sm-8"><p>weq';wleq;wlkeq;'wke';qlkwe';qlkwe'qkw;lekq;'wek'q;welkq'welkq';wekl</p></div>
+            <div class="col-md-8 col-sm-12">
+                <div class="thumbnail">
+                    <h3 class=" text-right"><span class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>&nbsp;</h3>
+                    <div class="caption text-center">
+                        <h3>Antminer S9</h3>
+                        <p>Цена 150000 рублей</p>
+                        <br/>
+                        <div class=" text-right">
+                            <div class="btn btn-success" onclick="add_buy(1);" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                            <div class="btn btn-warning" onclick="main();"><span class="glyphicon glyphicon-circle-arrow-left"></span> К списку</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-warning" type="button" data-dismiss="modal">Закрыть</button>
+
+        </div>
+    </div>
+
+    <div class="row" id="zoom">
+        <div class="col-md-12 col-sm-12">
+
+            <div class="thumbnail text-center">
+                <div class="btn btn-danger pull-right" onclick="show(1);"><span class="glyphicon glyphicon-remove"></span> Закрыть</div>
+                <img th:src="@{'/image/1'}" th:alt="1" width="700" height="800"><br/>
+                <ul class="pagination ">
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
             </div>
         </div>
     </div>
+
 </div>
+
+<!--modal window-->
+<!--<div id="infoModal" class="modal fade">-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<h2 class="modal-title text-center">Всё получилось =)</h2><br/>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--<div class="col-md-4 col-sm-4"><p>kq;jwekqjw;ekq;wekqjwe;qkjwe;lqjwelkqjwe</p></div>-->
+                <!--<div class="col-md-8 col-sm-8"><p>weq';wleq;wlkeq;'wke';qlkwe';qlkwe'qkw;lekq;'wek'q;welkq'welkq';wekl</p></div>-->
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+                <!--<button class="btn btn-warning" type="button" data-dismiss="modal">Закрыть</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
 
 
