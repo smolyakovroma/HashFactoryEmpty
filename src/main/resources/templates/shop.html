@@ -67,7 +67,26 @@
     </div>
 
     <div class="row" id="tab3">
-        <h1>GPU</h1>
+        <div class="col-md-4 col-sm-6" th:each="gpu : ${gpus}" >
+            <div class="thumbnail">
+                <h3 class=" text-right">
+                    <span th:if="${(gpu.amount > gpu.reserve) && (gpu.reserve!=0)}" class="label label-success" >&nbsp;На складе&nbsp;</span>
+                    <span th:if="${gpu.reserve == 0}" class="label label-info">&nbsp;Под заказ&nbsp;</span>
+                    <span th:if="${(gpu.amount <= gpu.reserve) && (gpu.reserve!=0) && (gpu.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
+                    <span th:if="${(gpu.amount == 0) && (gpu.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
+                    &nbsp;</h3>
+                <div class="text-center"><img  th:src="@{'/image/'+${gpu.id}}" th:alt="${gpu.id}" width="340" height="300"></div>
+                <div class="caption text-center">
+                    <h3><b th:text="${gpu.name}">Antminer S9</b></h3>
+                    <p><b>Цена</b>  <div th:text="${gpu.price}"/> рублей</p>
+                    <br/>
+                    <p>
+                    <div onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row" id="tab4">
         <h1>PSU</h1>

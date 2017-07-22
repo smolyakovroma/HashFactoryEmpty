@@ -2,7 +2,6 @@ package ru.hashfactory.empty.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import ru.hashfactory.empty.domain.Item;
 import ru.hashfactory.empty.domain.TypeItem;
@@ -20,13 +19,13 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public List<Item> getAllAsics() {
-        return itemsRepository.getAllAsics(TypeItem.ASIC);
+        return itemsRepository.getAllByTypeItem(TypeItem.ASIC);
     }
 
     @Override
 
     public List<Item> getAllGPU() {
-        return itemsRepository.getAllGPU();
+        return itemsRepository.getAllByTypeItem(TypeItem.GPU);
     }
 
     @Override
