@@ -3,6 +3,9 @@ package ru.hashfactory.empty.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 
@@ -28,12 +31,16 @@ public class Item {
     private int active;
     @Lob
     private byte[] pic;
-    @Lob
+    //TODO сделать LAZY
+    @Lob @Fetch(FetchMode.SELECT)
     private byte[] pic1;
+    @Basic(fetch = FetchType.LAZY)
     @Lob
     private byte[] pic2;
+    @Basic(fetch = FetchType.LAZY)
     @Lob
     private byte[] pic3;
+    @Basic(fetch = FetchType.LAZY)
     @Lob
     private byte[] pic4;
     @Enumerated(EnumType.STRING)

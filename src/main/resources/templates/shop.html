@@ -62,7 +62,7 @@
                     <p><b>Цена</b>  <div th:text="${asic.price}"/> рублей</p>
                     <br/>
                     <p>
-                    <div onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div th:onclick="'show('+${asic.id}+');'" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
                     <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
                     </p>
                 </div>
@@ -95,7 +95,7 @@
                     <p><b>Цена</b>  <div th:text="${ferm.price}"/> рублей</p>
                     <br/>
                     <p>
-                    <div onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div th:onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
                     <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
                     </p>
                 </div>
