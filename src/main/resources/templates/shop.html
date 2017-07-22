@@ -9,6 +9,7 @@
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/dist/css/signin.css" rel="stylesheet"/>
     <script src="/dist/js/jquery.min.js"></script>
+    <script src="/dist/js/shop.js"></script>
     <script src="/dist/js/bootstrap.min.js"></script>
     <link href="/dist/css/font-awesome.css" rel="stylesheet"/>
     <link href="/dist/css/footer.css" rel="stylesheet"/>
@@ -17,16 +18,72 @@
 
 <body>
 <div th:insert="header :: top (hostactive='',shopactive='active', aboutusactive='dropdown ')"></div>
+<br/>
+<br/>
 <div class="container">
-        <div class="row">
-            <div class="page-header">
-                <div class="alert alert-warning">
-                    <h2>Раздел в процессе заполнения</h2>
-                </div>
+    <div class="row">
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">ASIC майнеры</a></li>
+                <li><a href="#">GPU майнеры</a></li>
+                <li><a href="#">Блоки питания</a></li>
+                <li><a href="#">Комплектующие</a></li>
+                <li class="pull-right"><a href="#"><span
+                        class="glyphicon glyphicon-shopping-cart"></span> Корзина</a></li>
+                <!--                      <li><a href="#">Корзина <span class="badge">3</span></a></li>-->
+            </ul>
+        </div>
 
+    </div>
+    <br/>
+    <div class="row">
+
+        <div class="col-md-4 col-sm-6" th:each="asic : ${asics}" >
+            <div class="thumbnail">
+                <h3 class=" text-right">
+                    <span th:if="${(asic.amount > asic.reserve) && (asic.reserve!=0)}" class="label label-success" >&nbsp;На складе&nbsp;</span>
+                    <span th:if="${asic.reserve == 0}" class="label label-info">&nbsp;Под заказ&nbsp;</span>
+                    <span th:if="${(asic.amount <= asic.reserve) && (asic.reserve!=0) && (asic.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
+                    <span th:if="${(asic.amount == 0) && (asic.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
+                    &nbsp;</h3>
+                <div class="text-center"><img  th:src="@{'/image/'+${asic.id}}" th:alt="${asic.id}" width="340" height="300"></div>
+                <div class="caption text-center">
+                    <h3><b th:text="${asic.name}">Antminer S9</b></h3>
+                    <p><b>Цена</b>  <div th:text="${asic.price}"/> рублей</p>
+                    <br/>
+                    <p><a href="" class="btn btn-primary" data-toggle="modal" data-target="#infoModal" role="button"><span
+                            class="glyphicon glyphicon-search"></span> Подробней</a> <a href="#" class="btn btn-success"
+                                                                                        role="button"><span
+                            class="glyphicon glyphicon-shopping-cart"></span> В корзину</a></p>
+                </div>
             </div>
         </div>
+
+
+
+    </div>
 </div>
+
+<!--modal window-->
+<div id="infoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center">Всё получилось =)</h2><br/>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-4 col-sm-4"><p>kq;jwekqjw;ekq;wekqjwe;qkjwe;lqjwelkqjwe</p></div>
+                <div class="col-md-8 col-sm-8"><p>weq';wleq;wlkeq;'wke';qlkwe';qlkwe'qkw;lekq;'wek'q;welkq'welkq';wekl</p></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" type="button" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <!--footer-->
 <div th:insert="footer :: bottom"></div>
 </body>

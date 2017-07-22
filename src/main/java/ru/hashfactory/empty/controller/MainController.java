@@ -77,10 +77,6 @@ public class MainController {
         return "contacts";
     }
 
-    @RequestMapping(value = "/shop")
-    public String shop() {
-        return "shop";
-    }
 
 
     @RequestMapping(value = "/beta/calculator")
