@@ -175,7 +175,7 @@
         <div class="col-md-4 col-sm-6" th:each="other : ${others}" >
             <div class="thumbnail">
                 <h3 class=" text-right">
-                    <span th:if="${(other.amount > psu.reserve) && (other.reserve!=0)}" class="label label-success" >&nbsp;На складе&nbsp;</span>
+                    <span th:if="${(other.amount > other.reserve) && (other.reserve!=0)}" class="label label-success" >&nbsp;На складе&nbsp;</span>
                     <span th:if="${other.reserve == 0}" class="label label-info">&nbsp;Под заказ&nbsp;</span>
                     <span th:if="${(other.amount <= other.reserve) && (other.reserve!=0) && (other.amount!=0)}" class="label label-warning">&nbsp;На складе остатки&nbsp;</span>
                     <span th:if="${(other.amount == 0) && (other.reserve!=0)}" class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>
