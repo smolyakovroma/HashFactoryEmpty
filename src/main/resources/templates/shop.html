@@ -58,12 +58,14 @@
                     &nbsp;</h3>
                 <div class="text-center"><img  th:src="@{'/image/'+${asic.id}+'/0'}" th:alt="${asic.id}" width="340" height="300"></div>
                 <div class="caption text-center">
-                    <h3><b th:text="${asic.name}">Antminer S9</b></h3>
-                    <p><b>Цена</b>  <div th:text="${asic.price}"/> рублей</p>
+                    <h3><b th:text="${asic.name}">noname</b></h3>
+                    <h3>Цена  <b th:text="${#numbers.formatInteger(asic.price,3,'POINT')}"/> рублей</h3>
+                    <h4>Алгоритм  <b th:text="${asic.algoritm}"/></h4>
+                    <h4>Хишрейт  <b th:text="${asic.speed}"/></h4>
                     <br/>
                     <p>
-                    <div th:onclick="'show('+${asic.id}+');'" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
-                    <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                    <div th:onclick="'show('+${asic.id}+', 1);'" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div th:onclick="'add('+${asic.id}+',\''+${asic.name}+'\',\''+${asic.price}+'\');'" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
                     </p>
                 </div>
             </div>
@@ -91,12 +93,14 @@
                     &nbsp;</h3>
                 <div class="text-center"><img  th:src="@{'/image/'+${ferm.id}+'/0'}" th:alt="${ferm.id}" width="340" height="300"></div>
                 <div class="caption text-center">
-                    <h3><b th:text="${ferm.name}">Antminer S9</b></h3>
-                    <p><b>Цена</b>  <div th:text="${ferm.price}"/> рублей</p>
+                    <h3><b th:text="${ferm.name}">noname</b></h3>
+                    <h3>Цена  <b th:text="${#numbers.formatInteger(ferm.price,3,'POINT')}"/> рублей</h3>
+                    <h4>Алгоритм  <b th:text="${ferm.algoritm}"/></h4>
+                    <h4>Хишрейт  <b th:text="${ferm.speed}"/></h4>
                     <br/>
                     <p>
-                    <div th:onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
-                    <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                    <div th:onclick="'show('+${ferm.id}+', 2);'" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div th:onclick="'add('+${ferm.id}+',\''+${ferm.name}+'\',\''+${ferm.price}+'\');'" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
                     </p>
                 </div>
             </div>
@@ -122,12 +126,14 @@
                     &nbsp;</h3>
                 <div class="text-center"><img  th:src="@{'/image/'+${gpu.id}+'/0'}" th:alt="${gpu.id}" width="340" height="300"></div>
                 <div class="caption text-center">
-                    <h3><b th:text="${gpu.name}">Antminer S9</b></h3>
-                    <p><b>Цена</b>  <div th:text="${gpu.price}"/> рублей</p>
+                    <h3><b th:text="${gpu.name}">noname</b></h3>
+                    <h3>Цена  <b th:text="${#numbers.formatInteger(gpu.price,3,'POINT')}"/> рублей</h3>
+                    <h4>Алгоритм  <b th:text="${gpu.algoritm}"/></h4>
+                    <h4>Хишрейт  <b th:text="${gpu.speed}"/></h4>
                     <br/>
                     <p>
-                    <div onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
-                    <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                    <div th:onclick="'show('+${gpu.id}+', 3);'" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div th:onclick="'add('+${gpu.id}+',\''+${gpu.name}+'\',\''+${gpu.price}+'\');'" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
                     </p>
                 </div>
             </div>
@@ -152,12 +158,13 @@
                     &nbsp;</h3>
                 <div class="text-center"><img  th:src="@{'/image/'+${psu.id}+'/0'}" th:alt="${psu.id}" width="340" height="300"></div>
                 <div class="caption text-center">
-                    <h3><b th:text="${psu.name}">Antminer S9</b></h3>
-                    <p><b>Цена</b>  <div th:text="${psu.price}"/> рублей</p>
+                    <h3><b th:text="${psu.name}">noname</b></h3>
+                    <h3>Цена  <b th:text="${#numbers.formatInteger(psu.price,3,'POINT')}"/> рублей</h3>
+                    <h4>Мощность <b th:text="${psu.power}"/></h4>
                     <br/>
                     <p>
-                    <div onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
-                    <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                    <div th:onclick="'show('+${psu.id}+', 4);'" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div th:onclick="'add('+${psu.id}+',\''+${psu.name}+'\',\''+${psu.price}+'\');'" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
                     </p>
                 </div>
             </div>
@@ -182,12 +189,13 @@
                     &nbsp;</h3>
                 <div class="text-center"><img  th:src="@{'/image/'+${other.id}+'/0'}" th:alt="${other.id}" width="340" height="300"></div>
                 <div class="caption text-center">
-                    <h3><b th:text="${other.name}">Antminer S9</b></h3>
-                    <p><b>Цена</b>  <div th:text="${other.price}"/> рублей</p>
+                    <h3><b th:text="${other.name}">noname</b></h3>
+                    <h3>Цена  <b th:text="${#numbers.formatInteger(other.price,3,'POINT')}"/> рублей</h3>
+                    <h4>Производитель <b th:text="${other.producer}"/></h4>
                     <br/>
                     <p>
-                    <div onclick="show(1);" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
-                    <div onclick="add_buy(1);" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
+                    <div th:onclick="'show('+${other.id}+', 5);'" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>
+                    <div th:onclick="'add('+${other.id}+',\''+${other.name}+'\',\''+${other.price}+'\');'" class="btn btn-success" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
                     </p>
                 </div>
             </div>
@@ -196,9 +204,41 @@
     <div class="row" id="tab6">
         <div class="page-header">
             <div class="alert alert-info">
-                <h2>Корзина пуста!</h2>
+                <h2>Ваша корзина покупок</h2>
             </div>
 
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <table class="table table-bordered table-hover" id="table_buy">
+                <tr class="info text-center">
+                    <th class="text-center">#</th>
+                    <th class="text-center">Наименование</th>
+                    <th class="text-center">Количество</th>
+                    <th class="text-center">Цена</th>
+                    <th class="text-center">Сумма</th>
+                    <th class="text-center"><span class="glyphicon glyphicon-remove"></span></th>
+                </tr>
+
+            </table>
+            <h3 class="pull-right" id="total_sum">Итого сумма: 0 рублей</h3>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <div class="input-group" style="width:100%">
+                <span class="input-group-addon text-left" style="width:20%;text-align:left;">Адрес доставки</span>
+                <input type="text" class="form-control" placeholder="Укажите адрес">
+            </div><br/>
+            <div class="input-group" style="width:100%">
+                <span class="input-group-addon " style="width:20%;text-align:left;">Электронный ящик</span>
+                <input type="text" class="form-control" placeholder="email">
+            </div><br/>
+            <div class="input-group" style="width:100%">
+                <span class="input-group-addon text-left" style="width:20%;text-align:left;">Контактный номер телефона</span>
+                <input type="text" class="form-control" placeholder="Телефон">
+            </div>
+            <br/>
+            <a href="#" class="btn btn-info pull-right">Оформить заказ</a>
         </div>
     </div>
 
@@ -206,28 +246,22 @@
         <div class="col-md-12 col-sm-12">
 
             <div class="col-md-4 col-sm-12">
-                <div class="thumbnail text-center">
+                <div class="thumbnail text-center" id="info_img">
 
-                    <img th:src="@{'/image/1/0'}" th:alt="1" width="340" height="300" onclick="zoom();"><br/>
-                    <ul class="pagination ">
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                    </ul>
+                    <!--<img id="info_img" th:src="@{'/image/1/0'}" th:alt="1" width="340" height="300" onclick="zoom();"><br/>-->
+
                 </div>
             </div>
             <div class="col-md-8 col-sm-12">
                 <div class="thumbnail">
                     <h3 class=" text-right"><span class="label label-danger">&nbsp;Нет в наличие&nbsp;</span>&nbsp;</h3>
-                    <div class="caption text-center">
-                        <h3>Antminer S9</h3>
-                        <p>Цена 150000 рублей</p>
+                    <div class="caption text-left">
+                        <div id="about"></div>
+
                         <br/>
-                        <div class=" text-right">
-                            <div class="btn btn-success" onclick="add_buy(1);" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>
-                            <div class="btn btn-warning" onclick="main();"><span class="glyphicon glyphicon-circle-arrow-left"></span> К списку</div>
+                        <div class=" text-right" id="info_btn">
+                            <!--<div class="btn btn-success" onclick="add_buy(1);" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> В корзину</div>-->
+                            <!--<div class="btn btn-warning" onclick="main();"><span class="glyphicon glyphicon-circle-arrow-left"></span> К списку</div>-->
                         </div>
                     </div>
                 </div>
@@ -240,15 +274,15 @@
         <div class="col-md-12 col-sm-12">
 
             <div class="thumbnail text-center">
-                <div class="btn btn-danger pull-right" onclick="show(1);"><span class="glyphicon glyphicon-remove"></span> Закрыть</div>
-                <img th:src="@{'/image/1/0'}" th:alt="1" width="700" height="800"><br/>
-                <ul class="pagination ">
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                </ul>
+                <div class="btn btn-danger pull-right" onclick="close_zoom();"><span class="glyphicon glyphicon-remove"></span> Закрыть</div>
+                <div id="zoom_img"><img th:src="@{'/image/1/0'}" th:alt="1" width="700" height="800"></div><br/>
+                <!--<ul class="pagination ">-->
+                    <!--<li class="active"><a href="#">1</a></li>-->
+                    <!--<li><a href="#">2</a></li>-->
+                    <!--<li><a href="#">3</a></li>-->
+                    <!--<li><a href="#">4</a></li>-->
+                    <!--<li><a href="#">5</a></li>-->
+                <!--</ul>-->
             </div>
         </div>
     </div>
@@ -274,7 +308,7 @@
 <!--</div>-->
 
 
-
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <!--footer-->
 <div th:insert="footer :: bottom"></div>
 </body>

@@ -94,83 +94,85 @@
                     </div>
 
                     <button type="submit" id="submit" class="btn btn-primary pull-right">Сохранить</button>
-                    <br/> <br/>
+                    <a href="/admin/asics" class="btn btn-info">Выйти</a>
+                    <br/>
                 </div>
             </form>
         </div>
 
 
     </div>
-    <div class="row">
+
+    <!--<div class="row">-->
 
 
-        <div class="col-md-6 col-sm-6">
-            <div class="alert alert-info">
-                <div class="text-center">
-                    <img th:src="@{'/image/'+${item.id}+'/1'}" th:alt="${item.id}" width="340" height="300"><br/>
-                    <form method="POST" enctype="multipart/form-data" action="/admin/upload/1">
-                        <input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>
-                        <input type="file" name="file" class="btn btn-mini  btn-primary"
-                               style="display:inline; padding: 2px 1px;"/>
-                        <input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"
-                               value="&#128190;"/><br/><br/>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-6">
-            <div class="alert alert-info">
-                <div class="text-center">
-                    <img th:src="@{'/image/'+${item.id}+'/2'}" th:alt="${item.id}" width="340" height="300"><br/>
-                    <form method="POST" enctype="multipart/form-data" action="/admin/upload/2">
-                        <input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>
-                        <input type="file" name="file" class="btn btn-mini  btn-primary"
-                               style="display:inline; padding: 2px 1px;"/>
-                        <input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"
-                               value="&#128190;"/><br/><br/>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!--<div class="col-md-6 col-sm-6">-->
+            <!--<div class="alert alert-info">-->
+                <!--<div class="text-center">-->
+                    <!--<img th:src="@{'/image/'+${item.id}+'/1'}" th:alt="${item.id}" width="340" height="300"><br/>-->
+                    <!--<form method="POST" enctype="multipart/form-data" action="/admin/upload/1">-->
+                        <!--<input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>-->
+                        <!--<input type="file" name="file" class="btn btn-mini  btn-primary"-->
+                               <!--style="display:inline; padding: 2px 1px;"/>-->
+                        <!--<input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"-->
+                               <!--value="&#128190;"/><br/><br/>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-6 col-sm-6">-->
+            <!--<div class="alert alert-info">-->
+                <!--<div class="text-center">-->
+                    <!--<img th:src="@{'/image/'+${item.id}+'/2'}" th:alt="${item.id}" width="340" height="300"><br/>-->
+                    <!--<form method="POST" enctype="multipart/form-data" action="/admin/upload/2">-->
+                        <!--<input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>-->
+                        <!--<input type="file" name="file" class="btn btn-mini  btn-primary"-->
+                               <!--style="display:inline; padding: 2px 1px;"/>-->
+                        <!--<input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"-->
+                               <!--value="&#128190;"/><br/><br/>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
-    <div class="row">
+    <!--<div class="row">-->
 
 
-        <div class="col-md-6 col-sm-6">
-            <div class="alert alert-info">
-                <div class="text-center">
-                    <img th:src="@{'/image/'+${item.id}+'/3'}" th:alt="${item.id}" width="340" height="300"><br/>
-                    <form method="POST" enctype="multipart/form-data" action="/admin/upload/3">
-                        <input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>
-                        <input type="file" name="file" class="btn btn-mini  btn-primary"
-                               style="display:inline; padding: 2px 1px;"/>
-                        <input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"
-                               value="&#128190;"/><br/><br/>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-6">
-            <div class="alert alert-info">
-                <div class="text-center">
-                    <img th:src="@{'/image/'+${item.id}+'/4'}" th:alt="${item.id}" width="340" height="300"><br/>
-                    <form method="POST" enctype="multipart/form-data" action="/admin/upload/4">
-                        <input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>
-                        <input type="file" name="file" class="btn btn-mini  btn-primary"
-                               style="display:inline; padding: 2px 1px;"/>
-                        <input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"
-                               value="&#128190;"/><br/><br/>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!--<div class="col-md-6 col-sm-6">-->
+            <!--<div class="alert alert-info">-->
+                <!--<div class="text-center">-->
+                    <!--<img th:src="@{'/image/'+${item.id}+'/3'}" th:alt="${item.id}" width="340" height="300"><br/>-->
+                    <!--<form method="POST" enctype="multipart/form-data" action="/admin/upload/3">-->
+                        <!--<input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>-->
+                        <!--<input type="file" name="file" class="btn btn-mini  btn-primary"-->
+                               <!--style="display:inline; padding: 2px 1px;"/>-->
+                        <!--<input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"-->
+                               <!--value="&#128190;"/><br/><br/>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-6 col-sm-6">-->
+            <!--<div class="alert alert-info">-->
+                <!--<div class="text-center">-->
+                    <!--<img th:src="@{'/image/'+${item.id}+'/4'}" th:alt="${item.id}" width="340" height="300"><br/>-->
+                    <!--<form method="POST" enctype="multipart/form-data" action="/admin/upload/4">-->
+                        <!--<input class="form-control" type="hidden" id="id" name="id" th:value="${item.id}" required/>-->
+                        <!--<input type="file" name="file" class="btn btn-mini  btn-primary"-->
+                               <!--style="display:inline; padding: 2px 1px;"/>-->
+                        <!--<input type="submit" class="btn btn-mini  btn-primary" style="padding: 2px 3px;"-->
+                               <!--value="&#128190;"/><br/><br/>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
 </div>
 </div>
 
-<script src="/dist/js/jquery.min.js"></script>
 
-<s
 </body>
 </html>

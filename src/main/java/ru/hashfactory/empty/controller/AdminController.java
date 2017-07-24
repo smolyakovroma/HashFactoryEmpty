@@ -208,8 +208,20 @@ public class AdminController {
 
             return "redirect:/admin/users";
         }
+        Item byId = shopService.findById(item.getId());
+        byId.setSpeed(item.getSpeed());
+        byId.setReserve(item.getReserve());
+        byId.setProducer(item.getProducer());
+        byId.setPrioritet(item.getPrioritet());
+        byId.setPrice(item.getPrice());
+        byId.setName(item.getName());
+        byId.setIntake(item.getIntake());
+        byId.setDescription(item.getDescription());
+        byId.setAmount(item.getAmount());
+        byId.setActive(item.getActive());
+        byId.setTypeItem(item.getTypeItem());
 
-        item = shopService.save(item);
+        item = shopService.save(byId);
 //        Item item= shopService.findById(id);
 //        if (item != null) {
 //            modelAndView.getModel().put("item", item);
