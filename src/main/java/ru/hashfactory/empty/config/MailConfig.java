@@ -50,9 +50,9 @@ public class MailConfig {
         HtmlEmail email = new HtmlEmail();
         email.setHostName("smtp.yandex.com");
         email.setSmtpPort(465);
-        email.setAuthenticator(new DefaultAuthenticator("hashfactory@yandex.ru", "1234Zz"));
+        email.setAuthenticator(new DefaultAuthenticator("@mail.ru", "password"));
         email.setSSLOnConnect(true);
-        email.setFrom("hashfactory@yandex.ru", "HashFactory.ru");
+        email.setFrom("@mail.ru", "HashFactory.ru");
 
         if (body.indexOf("logo") > 0) {
             cid = email.embed(url, "logo");
