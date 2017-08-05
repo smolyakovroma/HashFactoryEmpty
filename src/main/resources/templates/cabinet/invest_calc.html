@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+
+    <title>HashFactory</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/dist/css/dashboard.css" rel="stylesheet">
+    <link href="/dist/css/footer.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div th:insert="cabinet/menu :: menu (selected='21')"></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="alert alert-info" style="color:black;" th:if="${message!=null}">
+                <h3 class="text-center" th:text="${message.text}"/>
+            </div>
+            <!--                <div class="alert alert-info" style="color:black;">-->
+            <div class="col-xs-8 col-md-8 col-sm-8">
+                <div class="form-group">
+                    <label for="ferm">Комплектация фермы      <button class="btn btn-xs btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span> как это выглядит</button></label>
+                    <select class="form-control" id="ferm">
+                        <option data-th-each="ferm : ${ferms}"><b th:text="${ferm.name}"></b></option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-xs-2 col-md-2 col-sm-2">
+                <div class="input-group">
+                    <label for="amount_ferm">Количество ферм</label>
+                    <div class="input-group">
+                        <input type="text" id="amount_ferm" class="form-control" value="1">
+                        <span class="input-group-addon">шт.</span></div>
+                </div>
+
+            </div>
+
+            <div class="col-xs-2 col-md-2 col-sm-2">
+                <div class="input-group">
+                    <label for="amount_ferm">Доходность с фермы в месяц</label>
+                    <div class="input-group">
+                        <input type="text" id="amount_ferm" class="form-control" value="0">
+                        <span class="input-group-addon">руб.</span></div>
+                </div>
+
+            </div>
+
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <br/>
+                <b class="sub-header">Спецификация</b>&nbsp;&nbsp;
+                <button class="btn btn-xs btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span> как это выглядит</button>
+
+
+                <br/><br/>
+                <div class="table-responsive" id="spec">
+                    <table class="table table-condensed  table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Наименование</th>
+                            <th>Количество</th>
+                            <th>Цена, руб.</th>
+                            <th>Сумма, руб.</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table_spec">
+                        <!--<tr>-->
+                            <!--<td>1</td>-->
+                            <!--<td id="gpu_name">Видеокарта GIGABYTE GTX 1060 6GB</td>-->
+                            <!--<td id="gpu_count">6</td>-->
+                            <!--<td id="gpu_price">20 000 </td>-->
+                            <!--<td id="gpu_sum">120 000 </td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>2</td>-->
+                            <!--<td>Материнская плата ASUS PRIME Z270-P</td>-->
+                            <!--<td>1</td>-->
+                            <!--<td>7 500 </td>-->
+                            <!--<td>7 500 </td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>3</td>-->
+                            <!--<td>Процессор Intel Celeron Skylake + куллер для процессора</td>-->
+                            <!--<td>1</td>-->
+                            <!--<td>3 000 </td>-->
+                            <!--<td>3 000 </td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>4</td>-->
+                            <!--<td>Райзер переходник PCIe-x16 to PCIe-x1</td>-->
+                            <!--<td>6</td>-->
+                            <!--<td>300 </td>-->
+                            <!--<td>1 800 </td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>5</td>-->
+                            <!--<td>Память DDR4 RAM 4GB</td>-->
+                            <!--<td>1</td>-->
+                            <!--<td>2 000 </td>-->
+                            <!--<td>2 000 </td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>6</td>-->
+                            <!--<td>SSD Диск KingDian 16GB</td>-->
+                            <!--<td>1</td>-->
+                            <!--<td>1 000</td>-->
+                            <!--<td>1 000 </td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>7</td>-->
+                            <!--<td>USB WATCHDOG LITE</td>-->
+                            <!--<td>1</td>-->
+                            <!--<td>800 </td>-->
+                            <!--<td>800 </td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>8</td>-->
+                            <!--<td>Серверный блок питания HP 1500W Gold 6+2PINx16</td>-->
+                            <!--<td>1</td>-->
+                            <!--<td>8 000 </td>-->
+                            <!--<td>8 000 </td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>9</td>-->
+                            <!--<td>Корпус, алюминий, с возможностью размещения до 8 карт</td>-->
+                            <!--<td>1</td>-->
+                            <!--<td>600 </td>-->
+                            <!--<td>600 </td>-->
+                        <!--</tr>-->
+                        </tbody>
+                    </table>
+                    <h4 class="pull-right">Стоимость: 144 700 рублей</h4>
+                </div>
+            </div>
+            <br/>
+
+            <div class="col-xs-12 col-md-12 col-sm-12">
+                <br/>
+                <b class="sub-header">Расчеты</b>&nbsp;&nbsp;
+                <button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button>
+
+                <br/><br/>
+                <div class="table-responsive" id="spec">
+                    <table class="table table-condensed  table-bordered" style="font-weight: bold;">
+                        <tbody>
+
+                        <tr>
+                            <td style="width: 40px;"><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+                            <td>Потребление электроэнергии в месяц</td>
+                            <td>4 320</td>
+                            <td>кВт</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+                            <td>Общая стоимость</td>
+                            <td>144 700</td>
+                            <td>руб.</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+                            <td>Тариф за хранение и обслуживание (в месяц)</td>
+                            <td>2 500</td>
+                            <td>руб.</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+                            <td>Комиссия с майнинга (в месяц)</td>
+                            <td>2 500</td>
+                            <td>руб.</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+                            <td>Доход в месяц</td>
+                            <td>10 000</td>
+                            <td>руб.</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+                            <td>Срок окупаемости оборудования</td>
+                            <td>10.4</td>
+                            <td>мес.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <!--                </div>-->
+
+
+
+        </div>
+    </div>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+</div>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Внешний вид ферм</h4>
+            </div>
+            <div class="modal-body text-center">
+                <b>Вертикальный вариант размещения карт</b><br/>
+                <img src="dist/image/ferm1.png" /><br/><br/><img src="dist/image/ferm2.png" /><br/><br/><img src="dist/image/ferm3.png" />
+                <br/><b>Горизонтальный вариант размещения карт</b><br/><img src="dist/image/ferm4.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:insert="cabinet/menu-footer :: menu-footer"></div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/dist/js/bootstrap.min.js"></script>
+<script src="/assets/js/docs.min.js"></script>
+<script src="/dist/js/profit.js"></script>
+</body>
+
+</html>

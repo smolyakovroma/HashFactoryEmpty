@@ -160,7 +160,7 @@
                 <div class="caption text-center">
                     <h3><b th:text="${psu.name}">noname</b></h3>
                     <h3>Цена  <b th:text="${#numbers.formatInteger(psu.price,3,'POINT')}"/> рублей</h3>
-                    <h4>Мощность <b th:text="${psu.power}"/></h4>
+                    <h4>Мощность <b th:text="${psu.intake}"/></h4>
                     <br/>
                     <p>
                     <div th:onclick="'show('+${psu.id}+', 4);'" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span> Подробней</div>

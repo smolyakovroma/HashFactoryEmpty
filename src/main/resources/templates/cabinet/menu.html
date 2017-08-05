@@ -12,15 +12,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img src="/dist/image/logo.png" style="top-padding:0px" /></a>
+                <a class="navbar-brand" href="/"><img src="/dist/image/logo.png" style="top-padding:0px"/></a>
                 <!--            <h2 style="color:white">Добро пожаловать <b th:text="${user.name}"></b></h2>-->
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a  target="_blank" href="https://coinmarketcap.com/currencies/bitcoin/" ><b><output th:text="${btc}" th:style="(${btc_rise}?'color:green;':'color:red;')+'padding-top:0px'">BTC - 0.0$</output></b></a></li>
-                    <li><a  target="_blank" href="https://coinmarketcap.com/currencies/ethereum/"><b><output th:text="${eth}" th:style="(${eth_rise}?'color:green;':'color:red;')+'padding-top:0px'">ETH - 0.0$</output></b></a></li>
+                    <li><a target="_blank" href="https://coinmarketcap.com/currencies/bitcoin/"><b>
+                        <output th:text="${btc}" th:style="(${btc_rise}?'color:green;':'color:red;')+'padding-top:0px'">
+                            BTC - 0.0$
+                        </output>
+                    </b></a></li>
+                    <li><a target="_blank" href="https://coinmarketcap.com/currencies/ethereum/"><b>
+                        <output th:text="${eth}" th:style="(${eth_rise}?'color:green;':'color:red;')+'padding-top:0px'">
+                            ETH - 0.0$
+                        </output>
+                    </b></a></li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown"><b  th:text="${user.name}">Пользователь</b> <b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown"><b th:text="${user.name}">Пользователь</b> <b
+                                class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/cabinet/settings">Настройки</a></li>
                             <li class="divider"></li>
@@ -36,56 +45,53 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar" th:if="${user.typeClient} > 0">
-                <ul class="nav nav-sidebar">
-                    <li th:class="${selected}=='1'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-th-large"></span>  Обзор</a></li>
 
-                    <li th:class="${selected}=='2'?'active':''" ><a href="/cabinet/ferms"><span class="glyphicon glyphicon-list-alt"></span>  Фермы</a></li>
-                    <li th:class="${selected}=='3'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-camera"></span>  Видеонаблюдение</a></li>
-                    <li th:class="${selected}=='4'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-list-alt"></span>  Анализ доходности</a></li>
-                </ul>
+
+            <div class="col-sm-3 col-md-2 sidebar" th:if="${user.typeClient} >= 0">
+
                 <ul class="nav nav-sidebar">
-                    <li th:class="${selected}=='5'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-signal"></span>  Ваш брокер</a></li>
-                    <li th:class="${selected}=='6'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-bookmark"></span>  Анализ</a></li>
-                    <li th:class="${selected}=='7'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-bullhorn"></span>  Новости</a></li>
-                    <li th:class="${selected}=='8'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-book"></span>  Статьи</a></li>
-                    <li th:class="${selected}=='9'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-usd"></span>  Выплаты</a></li>
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li th:class="${selected}=='10'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-leaf"></span>  Бизнес-модель</a></li>
-                    <li th:class="${selected}=='11'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-globe"></span>  Новости компании</a></li>
+                    <li th:class="${selected}=='1'?'active':''"><a href="/cabinet/dashboard"><span
+                            class="glyphicon glyphicon-th-large"></span> Обзор</a></li>
                 </ul>
 
                 <ul class="nav nav-sidebar" th:if="${user.typeClient} > 1">
-                    <li th:class="${selected}=='13'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-briefcase"></span>  Для партнёров</a></li>
-                    <li th:class="${selected}=='14'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-folder-open"></span>  Юридическая информация</a></li>
-                    <li th:class="${selected}=='15'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-send"></span>  Инвестиции</a></li>
+                    <li th:class="${selected}=='2'?'active':''"><a href="/cabinet/ferms"><span
+                            class="glyphicon glyphicon-list-alt"></span> Фермы</a></li>
+                    <li th:class="${selected}=='3'?'active':''"><a href="/cabinet/dashboard"><span
+                            class="glyphicon glyphicon-camera"></span> Видеонаблюдение</a></li>
+                    <li th:class="${selected}=='4'?'active':''"><a href="/cabinet/dashboard"><span
+                            class="glyphicon glyphicon-list-alt"></span> Анализ доходности</a></li>
+                    <li th:class="${selected}=='9'?'active':''"><a href="/cabinet/dashboard"><span
+                            class="glyphicon glyphicon-usd"></span> Выплаты</a></li>
+                    <li th:class="${selected}=='7'?'active':''"><a href="/cabinet/dashboard"><span
+                            class="glyphicon glyphicon-bullhorn"></span> Новости</a></li>
                 </ul>
 
                 <ul class="nav nav-sidebar" th:if="${user.typeClient} > 2">
-
-                    <li th:class="${selected}=='16'?'active':''" ><a href="/cabinet/ferms"><span class="glyphicon glyphicon-shopping-cart"></span>  Покупка видеокарт</a></li>
-                    <li th:class="${selected}=='17'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-exclamation-sign"></span>  Инвест предложения</a></li>
-                    <li th:class="${selected}=='18'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-compressed"></span>  Доставка</a></li>
-
+                    <li th:class="${selected}=='5'?'active':''"><a href="/cabinet/dashboard"><span
+                            class="glyphicon glyphicon-signal"></span> Ваш брокер</a></li>
+                    <li th:class="${selected}=='6'?'active':''"><a href="/cabinet/dashboard"><span
+                            class="glyphicon glyphicon-bookmark"></span> Анализ</a></li>
+                    <li th:class="${selected}=='8'?'active':''"><a href="/cabinet/dashboard"><span
+                            class="glyphicon glyphicon-book"></span> Статьи</a></li>
                 </ul>
-                <ul class="nav nav-sidebar" th:if="${user.typeClient} > 2">
 
-                    <li  th:class="${selected}=='19'?'active':''" ><a href="/admin/users"><span class="glyphicon glyphicon-wrench"></span>  Админка</a></li>
-
-                </ul>
-            </div>
-
-            <div class="col-sm-3 col-md-2 sidebar" th:if="${user.typeClient} == 0">
                 <ul class="nav nav-sidebar">
-
-                    <li th:class="${selected}=='20'?'active':''" ><a href="/cabinet/ferms"><span class="glyphicon glyphicon-shopping-cart"></span>  Покупка видеокарт</a></li>
-                    <li  th:class="${selected}=='21'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-exclamation-sign"></span>  Инвест предложения</a></li>
-                    <li  th:class="${selected}=='22'?'active':''" ><a href="/cabinet/dashboard"><span class="glyphicon glyphicon-compressed"></span>  Доставка</a></li>
+                    <li th:class="${selected}=='20'?'active':''"><a href="/cabinet/invest"><span
+                            class="glyphicon glyphicon-briefcase"></span> Инвестиционное предложение</a></li>
+                    <li th:class="${selected}=='21'?'active':''"><a href="/cabinet/invest_calc"><span
+                            class="glyphicon glyphicon-signal"></span> Расчеты</a></li>
+                    <li th:class="${selected}=='22'?'active':''"><a href="/cabinet/documents"><span
+                            class="glyphicon glyphicon-file"></span> Документы</a></li>
                 </ul>
 
-
+                <ul class="nav nav-sidebar" th:if="${user.typeClient} == 3">
+                    <li th:class="${selected}=='19'?'active':''"><a href="/admin/users"><span
+                            class="glyphicon glyphicon-wrench"></span> Админка</a></li>
+                </ul>
             </div>
+
+
         </div>
     </div>
 </div>
