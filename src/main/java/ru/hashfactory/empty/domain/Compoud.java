@@ -1,10 +1,13 @@
 package ru.hashfactory.empty.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -12,7 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "compoud")
-public class Compoud {
+@ToString
+public class Compoud implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,10 +25,13 @@ public class Compoud {
     private float price;
     private int amount;
 
-    @ManyToMany
-    @JoinTable(name = "compoundFerms",
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "jnd_compoundFerms",
             joinColumns = @JoinColumn(name = "ferm_fk"),
             inverseJoinColumns = @JoinColumn(name = "compound_fk"))
-    private List<Ferm> listFerm;
+    @JsonBackReference
+    private List<Ferm>  listFerm;
+
+    private int ord;
 
 }

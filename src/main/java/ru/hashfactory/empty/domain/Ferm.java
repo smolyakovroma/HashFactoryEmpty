@@ -1,12 +1,15 @@
 package ru.hashfactory.empty.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -15,7 +18,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ferm")
-public class Ferm {
+@ToString
+public class Ferm implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,10 +27,14 @@ public class Ferm {
     private int id;
     @Column(unique = true)
     private String name;
-    @ManyToMany(mappedBy = "listFerm")
+    @ManyToMany(mappedBy = "listFerm", fetch = FetchType.LAZY)
+    @OrderBy("ord")
+    @JsonManagedReference
     private List<Compoud> listCompoud;
 
     private int power;
+    private int countVK;
+    private int countPSU;
 
     private float profit;
 

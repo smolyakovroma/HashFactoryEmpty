@@ -10,10 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ru.hashfactory.empty.domain.CompoudFerm;
-import ru.hashfactory.empty.domain.Message;
-import ru.hashfactory.empty.domain.Profit;
-import ru.hashfactory.empty.domain.User;
+import ru.hashfactory.empty.domain.*;
 import ru.hashfactory.empty.service.CabinetService;
 import ru.hashfactory.empty.service.UserService;
 
@@ -172,11 +169,9 @@ public class DashboardController {
     }
 
     @RequestMapping(value = "/invest_calc/{name}", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<List<CompoudFerm>> getFermByName(@PathVariable String name) {
-
-        List<CompoudFerm> spec = cabinetService.findByFermNameOrderByOrd(name);
-        Profit profit = cabinetService.findFirstByFermName(name);
-        return new ResponseEntity<List<CompoudFerm>>(spec, HttpStatus.OK);
+    public ResponseEntity<Ferm> getFermByName(@PathVariable String name) {
+        Ferm ferm = cabinetService.findByName(name);
+        return new ResponseEntity<Ferm>(ferm, HttpStatus.OK);
 
     }
 
