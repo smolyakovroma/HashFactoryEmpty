@@ -169,9 +169,10 @@ public class DashboardController {
     }
 
     @RequestMapping(value = "/invest_calc/{name}", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<Ferm> getFermByName(@PathVariable String name) {
+    public ResponseEntity<List<CompoudFerm>> getFermByName(@PathVariable String name) {
         Ferm ferm = cabinetService.findByName(name);
-        return new ResponseEntity<Ferm>(ferm, HttpStatus.OK);
+        List<CompoudFerm> spec = cabinetService.findByFermNameOrderByOrd(name);
+        return new ResponseEntity<List<CompoudFerm>>(spec, HttpStatus.OK);
 
     }
 

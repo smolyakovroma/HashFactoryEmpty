@@ -6,11 +6,9 @@ import org.springframework.stereotype.Service;
 import ru.hashfactory.empty.domain.CompoudFerm;
 import ru.hashfactory.empty.domain.Ferm;
 import ru.hashfactory.empty.domain.Message;
-import ru.hashfactory.empty.domain.Profit;
 import ru.hashfactory.empty.repository.CompoudFermRepository;
 import ru.hashfactory.empty.repository.FermRepository;
 import ru.hashfactory.empty.repository.MessageRepository;
-import ru.hashfactory.empty.repository.ProfitRepository;
 
 import java.util.List;
 
@@ -20,10 +18,6 @@ public class CabinetServiceImpl implements CabinetService {
     @Autowired
     @Qualifier("fermRepository")
     private FermRepository fermRepository;
-
-    @Autowired
-    @Qualifier("profitRepository")
-    private ProfitRepository profitRepository;
 
     @Autowired
     @Qualifier("compoudfermRepository")
@@ -58,10 +52,6 @@ public class CabinetServiceImpl implements CabinetService {
         return compoudFermRepository.findByFermNameOrderByOrd(name);
     }
 
-    @Override
-    public Profit findFirstByFermName(String name) {
-        return profitRepository.findFirstByFermName(name);
-    }
 
     @Override
     public Message findMessageById(int id) {

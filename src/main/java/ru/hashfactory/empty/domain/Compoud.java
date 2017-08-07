@@ -23,15 +23,13 @@ public class Compoud implements Serializable {
     private int id;
     private String name;
     private float price;
-    private int amount;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "jnd_compoundFerms",
-            joinColumns = @JoinColumn(name = "ferm_fk"),
-            inverseJoinColumns = @JoinColumn(name = "compound_fk"))
-    @JsonBackReference
-    private List<Ferm>  listFerm;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(name = "jnd_compoundFerms",
+//            joinColumns = @JoinColumn(name = "ferm_fk"),
+//            inverseJoinColumns = @JoinColumn(name = "compound_fk"))
+//    @JsonBackReference
+//    private List<Ferm>  listFerm;
 
-    private int ord;
 
 }

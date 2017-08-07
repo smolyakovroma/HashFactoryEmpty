@@ -27,16 +27,16 @@ public class Ferm implements Serializable {
     private int id;
     @Column(unique = true)
     private String name;
-    @ManyToMany(mappedBy = "listFerm", fetch = FetchType.LAZY)
-    @OrderBy("ord")
-    @JsonManagedReference
-    private List<Compoud> listCompoud;
+//    @ManyToMany(mappedBy = "listFerm", fetch = FetchType.LAZY)
+//    @OrderBy("ord")
+//    @JsonManagedReference
+//    private List<Compoud> listCompoud;
 
     private int power;
     private int countVK;
     private int countPSU;
 
-    private float profit;
+    private float income;
 
     private int tarif1;
     private int tarif2;

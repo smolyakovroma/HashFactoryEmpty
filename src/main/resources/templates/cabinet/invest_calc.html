@@ -53,7 +53,7 @@
                 <div class="input-group">
                     <label for="amount_ferm">Количество ферм</label>
                     <div class="input-group">
-                        <input type="text" id="amount_ferm" class="form-control" value="1">
+                        <input type="text" id="amount_ferm" onchange="calc();"  class="form-control" value="1">
                         <span class="input-group-addon">шт.</span></div>
                 </div>
 
@@ -61,9 +61,9 @@
 
             <div class="col-xs-2 col-md-2 col-sm-2">
                 <div class="input-group">
-                    <label for="amount_ferm">Доходность с фермы в месяц</label>
+                    <label for="income">Доходность фермы в месяц</label>
                     <div class="input-group">
-                        <input type="text" id="amount_ferm" class="form-control" value="0">
+                        <input type="text" id="income"   onchange="calc();" class="form-control" value="0">
                         <span class="input-group-addon">руб.</span></div>
                 </div>
 
@@ -88,72 +88,11 @@
                         </tr>
                         </thead>
                         <tbody id="table_spec">
-                        <!--<tr>-->
-                            <!--<td>1</td>-->
-                            <!--<td id="gpu_name">Видеокарта GIGABYTE GTX 1060 6GB</td>-->
-                            <!--<td id="gpu_count">6</td>-->
-                            <!--<td id="gpu_price">20 000 </td>-->
-                            <!--<td id="gpu_sum">120 000 </td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td>2</td>-->
-                            <!--<td>Материнская плата ASUS PRIME Z270-P</td>-->
-                            <!--<td>1</td>-->
-                            <!--<td>7 500 </td>-->
-                            <!--<td>7 500 </td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td>3</td>-->
-                            <!--<td>Процессор Intel Celeron Skylake + куллер для процессора</td>-->
-                            <!--<td>1</td>-->
-                            <!--<td>3 000 </td>-->
-                            <!--<td>3 000 </td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td>4</td>-->
-                            <!--<td>Райзер переходник PCIe-x16 to PCIe-x1</td>-->
-                            <!--<td>6</td>-->
-                            <!--<td>300 </td>-->
-                            <!--<td>1 800 </td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td>5</td>-->
-                            <!--<td>Память DDR4 RAM 4GB</td>-->
-                            <!--<td>1</td>-->
-                            <!--<td>2 000 </td>-->
-                            <!--<td>2 000 </td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td>6</td>-->
-                            <!--<td>SSD Диск KingDian 16GB</td>-->
-                            <!--<td>1</td>-->
-                            <!--<td>1 000</td>-->
-                            <!--<td>1 000 </td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td>7</td>-->
-                            <!--<td>USB WATCHDOG LITE</td>-->
-                            <!--<td>1</td>-->
-                            <!--<td>800 </td>-->
-                            <!--<td>800 </td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td>8</td>-->
-                            <!--<td>Серверный блок питания HP 1500W Gold 6+2PINx16</td>-->
-                            <!--<td>1</td>-->
-                            <!--<td>8 000 </td>-->
-                            <!--<td>8 000 </td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td>9</td>-->
-                            <!--<td>Корпус, алюминий, с возможностью размещения до 8 карт</td>-->
-                            <!--<td>1</td>-->
-                            <!--<td>600 </td>-->
-                            <!--<td>600 </td>-->
-                        <!--</tr>-->
+
+
                         </tbody>
                     </table>
-                    <h4 class="pull-right">Стоимость: 144 700 рублей</h4>
+                    <h4 class="pull-right" id="sum">Стоимость: 144 700 рублей</h4>
                 </div>
             </div>
             <br/>
@@ -164,44 +103,46 @@
                 <button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button>
 
                 <br/><br/>
-                <div class="table-responsive" id="spec">
+                <div class="table-responsive" id="calculation">
                     <table class="table table-condensed  table-bordered" style="font-weight: bold;">
-                        <tbody>
-
+                        <tbody id="table_calculation">
+                        <tr>
+                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+                            <td>Общий размер инвестиций</td>
+                            <td id="total_sum">0</td>
+                            <td>руб.</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+                            <td>Доходность всех ферм (в месяц)</td>
+                            <td id="total_income">0</td>
+                            <td>руб.</td>
+                        </tr>
                         <tr>
                             <td style="width: 40px;"><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
-                            <td>Потребление электроэнергии в месяц</td>
-                            <td>4 320</td>
+                            <td>Потребление электроэнергии всех ферм (в месяц)</td>
+                            <td id="total_power">0</td>
                             <td>кВт</td>
                         </tr>
                         <tr>
                             <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
-                            <td>Общая стоимость</td>
-                            <td>144 700</td>
+                            <td>Ежемесячная комиссия за хранение и обслуживания, но не ниже фиксированного тарифа<br/><br/>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Размер комиссии&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-xs btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg" style="width:100px" id="procent">0</button></p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;Тариф для фермы&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button  style="width:100px" class="btn btn-xs btn-warning" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg" id="tarif">0</button></p></td>
+                            <td id="tarif_or_procent">0</td>
+                            <td>руб.</td>
+                        </tr>
+
+                        <tr>
+                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
+                            <td>Прибыль всех ферм (в месяц)</td>
+                            <td id="total_profit">0</td>
                             <td>руб.</td>
                         </tr>
                         <tr>
                             <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
-                            <td>Тариф за хранение и обслуживание (в месяц)</td>
-                            <td>2 500</td>
-                            <td>руб.</td>
-                        </tr>
-                        <tr>
-                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
-                            <td>Комиссия с майнинга (в месяц)</td>
-                            <td>2 500</td>
-                            <td>руб.</td>
-                        </tr>
-                        <tr>
-                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
-                            <td>Доход в месяц</td>
-                            <td>10 000</td>
-                            <td>руб.</td>
-                        </tr>
-                        <tr>
-                            <td><button class="btn btn-sm btn-info" data-toggle="modal" data-keyboard="true" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-info-sign"></span></button></td>
-                            <td>Срок окупаемости оборудования</td>
-                            <td>10.4</td>
+                            <td>Срок окупаемости всего оборудования</td>
+                            <td id="roi">0</td>
                             <td>мес.</td>
                         </tr>
                         </tbody>
