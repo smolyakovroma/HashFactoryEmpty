@@ -172,7 +172,7 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
         User user = userService.findUserByEmail(email.trim());
 
-        if (user!=null) {
+        if (user!=null && user.getActive()!=0) {
             StringBuilder builder = new StringBuilder();
 
             builder.append("<table cellpadding=15 style='margin-top:10px; margin-left:20px;' border='0'>");

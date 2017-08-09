@@ -37,6 +37,9 @@ public class Ferm implements Serializable {
     private int countPSU;
 
     private float income;
+    private String coin;
+    private String onDate;
+    private float profitPerCoin;
 
     private int tarif1;
     private int tarif2;

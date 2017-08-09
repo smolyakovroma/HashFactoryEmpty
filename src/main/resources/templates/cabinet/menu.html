@@ -49,12 +49,9 @@
 
             <div class="col-sm-3 col-md-2 sidebar" th:if="${user.typeClient} >= 0">
 
-                <ul class="nav nav-sidebar">
+                <ul class="nav nav-sidebar" th:if="${user.typeClient} > 0">
                     <li th:class="${selected}=='1'?'active':''"><a href="/cabinet/dashboard"><span
                             class="glyphicon glyphicon-th-large"></span> Обзор</a></li>
-                </ul>
-
-                <ul class="nav nav-sidebar" th:if="${user.typeClient} > 1">
                     <li th:class="${selected}=='2'?'active':''"><a href="/cabinet/ferms"><span
                             class="glyphicon glyphicon-list-alt"></span> Фермы</a></li>
                     <li th:class="${selected}=='3'?'active':''"><a href="/cabinet/dashboard"><span
@@ -67,7 +64,7 @@
                             class="glyphicon glyphicon-bullhorn"></span> Новости</a></li>
                 </ul>
 
-                <ul class="nav nav-sidebar" th:if="${user.typeClient} > 2">
+                <ul class="nav nav-sidebar" th:if="${user.typeClient} > 1">
                     <li th:class="${selected}=='5'?'active':''"><a href="/cabinet/dashboard"><span
                             class="glyphicon glyphicon-signal"></span> Ваш брокер</a></li>
                     <li th:class="${selected}=='6'?'active':''"><a href="/cabinet/dashboard"><span

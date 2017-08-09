@@ -10,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ru.hashfactory.empty.domain.*;
+import ru.hashfactory.empty.domain.CompoudFerm;
+import ru.hashfactory.empty.domain.Ferm;
+import ru.hashfactory.empty.domain.Message;
+import ru.hashfactory.empty.domain.User;
 import ru.hashfactory.empty.service.CabinetService;
 import ru.hashfactory.empty.service.UserService;
 
@@ -98,7 +101,7 @@ public class DashboardController {
             String output;
             while ((output = br.readLine()) != null) {
                 if (output.indexOf("Rate") > 0) {
-                    result = Float.parseFloat(output.substring(output.indexOf("Rate") + 7,output.indexOf("Rate") + 14));
+                    result = Float.parseFloat(output.substring(output.indexOf("Rate") + 7, output.indexOf("Rate") + 14));
                 }
 
             }
@@ -110,8 +113,8 @@ public class DashboardController {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (NumberFormatException e) {
-        e.printStackTrace();
-    }
+            e.printStackTrace();
+        }
 
         return result;
     }
@@ -122,7 +125,12 @@ public class DashboardController {
         User user = getPrincipalUser();
         modelAndView.getModel().put("user", user);
         modelAndView = getCurrencyForPage(modelAndView);
-        modelAndView.setViewName("cabinet/dashboard");
+        if (user.getTypeClient() == 0) {
+            modelAndView.setViewName("redirect:/cabinet/invest");
+        } else {
+            modelAndView.setViewName("cabinet/dashboard");
+        }
+
         return modelAndView;
     }
 
@@ -142,8 +150,9 @@ public class DashboardController {
     }
 
     @RequestMapping(value = "/invest", method = RequestMethod.GET)
-    public ModelAndView invest(@SessionAttribute User user) {
-        if (user == null) user = getPrincipalUser();
+    //TODO наверно так и оставлю
+    public ModelAndView invest() {
+        User user = getPrincipalUser();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.getModel().put("user", user);
         modelAndView = getCurrencyForPage(modelAndView);
@@ -155,7 +164,7 @@ public class DashboardController {
     @RequestMapping(value = "/invest_calc", method = RequestMethod.GET)
 //    public ModelAndView investCalc(@SessionAttribute User user) {
 //        if(user==null) user = getPrincipalUser();
-    //TODO на время отладки
+    //TODO на время отладки, наверно так и оставлю
     public ModelAndView investCalc() {
         User user = getPrincipalUser();
         ModelAndView modelAndView = new ModelAndView();
