@@ -10,10 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ru.hashfactory.empty.domain.CompoudFerm;
-import ru.hashfactory.empty.domain.Ferm;
-import ru.hashfactory.empty.domain.Message;
-import ru.hashfactory.empty.domain.User;
+import ru.hashfactory.empty.domain.*;
 import ru.hashfactory.empty.service.CabinetService;
 import ru.hashfactory.empty.service.UserService;
 
@@ -25,6 +22,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/cabinet")
@@ -126,7 +124,7 @@ public class DashboardController {
         modelAndView.getModel().put("user", user);
         modelAndView = getCurrencyForPage(modelAndView);
         if (user.getTypeClient() == 0) {
-            modelAndView.setViewName("redirect:/cabinet/invest");
+            modelAndView.setViewName("redirect:/cabinet/invest_calc");
         } else {
             modelAndView.setViewName("cabinet/dashboard");
         }

@@ -29,7 +29,7 @@ public class CabinetServiceImpl implements CabinetService {
 
     @Override
     public List<Ferm> findAllFerm() {
-        return fermRepository.findAll();
+        return fermRepository.findByActive(1);
     }
 
     @Override

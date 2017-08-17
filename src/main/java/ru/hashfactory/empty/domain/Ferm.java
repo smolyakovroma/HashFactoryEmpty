@@ -33,6 +33,8 @@ public class Ferm implements Serializable {
 //    private List<Compoud> listCompoud;
 
     private int power;
+    //active = 1 else 0
+    private int active;
     private int countVK;
     private int countPSU;
 
